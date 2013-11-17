@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :lists, foreign_key: :owner
+  has_many :lists
 
   validates :name, presence: true
   validates :uid, presence: true

@@ -1,11 +1,11 @@
 ChristmasLists::Application.routes.draw do
-  get "lists/index"
 
   post "/auth/:provider/callback" => "sessions#create"
   get "/auth/failure" => "sessions#failure"
   get "/logout" => "sessions#destroy", :as => :logout
   get "/login" => "sessions#new", :as => :login
   resources :identities
+  resources :lists
 
   root 'lists#index'
   # The priority is based upon order of creation: first created -> highest priority.
