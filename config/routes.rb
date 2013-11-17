@@ -1,4 +1,12 @@
 ChristmasLists::Application.routes.draw do
+  get "lists/index"
+
+  post "/auth/:provider/callback" => "sessions#create"
+  get "/auth/failure" => "sessions#failure"
+  get "/signout" => "sessions#destroy", :as => :logout
+  resources :identities
+
+  root 'lists#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
