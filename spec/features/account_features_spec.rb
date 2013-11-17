@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Visitor signs up' do
   scenario 'with valid email and password' do
     sign_up_with 'testuser', 'test@example.com', 'password'
-    page.should have_content 'Welcome testuser!'
+    page.should have_content 'Logout testuser'
   end
   
   scenario 'with invalid email' do
@@ -22,7 +22,7 @@ feature 'user signs in' do
     sign_up_with 'testuser', 'test@example.com', 'password'  
     sign_out
     sign_in_with 'test@example.com', 'password'
-    page.should have_content 'Welcome testuser!'
+    page.should have_content 'Logout testuser'
   end
   
   scenario 'with invalid password' do

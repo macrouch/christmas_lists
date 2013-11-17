@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ChristmasLists</title>
+  <title>Christmas Lists</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="user">
-    <% if current_user %>
-      Welcome <%= link_to current_user.name, 'current_user' %>!
-      <%= link_to "Sign Out", logout_path %>
-    <% else %>
-      <p>
-        <strong>Don't use these services?</strong>
-        <%= link_to "Create an account", new_identity_path %> or login below.
-      </p>
-
-      <%= form_tag "/auth/identity/callback" do %>
-        <div class="field">
-          <%= label_tag :auth_key, "Email" %><br>
-          <%= text_field_tag :auth_key %>
+  <div class='navbar navbar-inverse navbar-fixed-top'>
+    <div class='navbar-inner'>
+      <div clas='container'>
+        <button type='button' class='btn btn-navbar' data-toggle='collapse' data-target='.nav-collapse'>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+        </button>
+        <%= link_to 'Christmas Lists', root_url, class: 'brand' %>
+        <div class='nav-collapse collapse'>
+          <ul class='nav'>
+            <li>
+              <%= link_to 'View Lists', root_url %>
+            </li>
+          </ul>
+          <ul class='nav pull-right'>
+            <% if current_user %>
+              <li>
+                <%= link_to "Logout #{current_user.name}", logout_path %>
+              </li>
+            <% end %>
+          </ul>
         </div>
-        <div class="field">
-          <%= label_tag :password %><br>
-          <%= password_field_tag :password %>
-        </div>
-        <div class="actions"><%= submit_tag "Login" %></div>
-      <% end %>
-    <% end %>
+      </div>
+    </div>
   </div>
 
-<%= yield %>
-
+  <div class='container'>
+    <div class='row'>
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

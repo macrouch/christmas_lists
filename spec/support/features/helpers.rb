@@ -18,7 +18,7 @@ module Features
 
     def sign_out
       visit root_url
-      click_link "Sign Out"
+      click_link "Logout"
     end
   end
 end

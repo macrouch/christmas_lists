@@ -3,7 +3,8 @@ ChristmasLists::Application.routes.draw do
 
   post "/auth/:provider/callback" => "sessions#create"
   get "/auth/failure" => "sessions#failure"
-  get "/signout" => "sessions#destroy", :as => :logout
+  get "/logout" => "sessions#destroy", :as => :logout
+  get "/login" => "sessions#new", :as => :login
   resources :identities
 
   root 'lists#index'

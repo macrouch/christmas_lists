@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>New Account</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>Christmas Lists</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="top">
-  </div>
-  
-  <div id="content">
-    <%= yield %>
+  <div class='navbar navbar-inverse navbar-fixed-top'>
+    <div class='navbar-inner'>
+      <div clas='container'>
+        <button type='button' class='btn btn-navbar' data-toggle='collapse' data-target='.nav-collapse'>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+        </button>
+        <%= link_to 'Christmas Lists', root_url, class: 'brand' %>
+      </div>
+    </div>
   </div>
 
+  <div class='container'>
+    <div class='row'>
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>
