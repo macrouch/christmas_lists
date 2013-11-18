@@ -5,7 +5,8 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
-  def show    
+  def show  
+    @list_items = ListItem.where(list: @list)
   end
 
   def new

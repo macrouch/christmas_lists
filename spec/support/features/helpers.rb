@@ -43,5 +43,18 @@ module Features
       end
       click_button 'Update List'
     end
+
+    ### Item Helpers
+    def create_item_with(name, description)
+      fill_in 'Name', with: name
+      fill_in 'Description', with: description
+      click_button 'Create Item'
+    end
+
+    def edit_item_with(name, description)
+      fill_in 'Name', with: name
+      fill_in 'Description', with: description
+      click_button 'Update Item'
+    end
   end
 end

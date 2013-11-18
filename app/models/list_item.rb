@@ -5,4 +5,7 @@ class ListItem < ActiveRecord::Base
   validates :list, presence: true
   validates :item, presence: true
   validates :visible_to_owner, presence: true
+
+  delegate :name, to: :item
+  delegate :description, to: :item
 end

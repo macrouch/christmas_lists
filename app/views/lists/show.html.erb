@@ -11,4 +11,17 @@
 </p>
 
 <%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<%= link_to 'Back', lists_path %> |
+<%= link_to 'Add Item', new_list_item_path(@list) %>
+
+<% @list_items.each do |list_item| %>
+  <p>
+    <strong>Name:</strong>
+    <%= list_item.name %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= list_item.description %>
+  </p>
+  <%= link_to 'Edit Item', edit_list_item_path(@list, list_item.item) %>
+<% end %>

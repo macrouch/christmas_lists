@@ -5,7 +5,9 @@ ChristmasLists::Application.routes.draw do
   get "/logout" => "sessions#destroy", :as => :logout
   get "/login" => "sessions#new", :as => :login
   resources :identities
-  resources :lists
+  resources :lists do
+    resources :items, only: [:new, :edit, :update, :create, :destroy]
+  end
 
   root 'lists#index'
   # The priority is based upon order of creation: first created -> highest priority.
