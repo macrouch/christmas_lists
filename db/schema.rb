@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116185101) do
+ActiveRecord::Schema.define(version: 20131119014007) do
 
   create_table "identities", force: true do |t|
     t.string   "name"
@@ -26,16 +26,10 @@ ActiveRecord::Schema.define(version: 20131116185101) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "list_items", force: true do |t|
-    t.integer  "item_id"
     t.integer  "list_id"
     t.boolean  "visible_to_owner"
     t.boolean  "purchased"
     t.string   "purchased_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "lists", force: true do |t|

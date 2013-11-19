@@ -11,10 +11,10 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    list_item = ListItem.new(list: @list, item: @item, visible_to_owner: true)
+    @item.list = @list
 
     respond_to do |format|
-      if @item.save && list_item.save
+      if @item.save
         format.html { redirect_to @list }
       else
         format.html { render action: 'new'}
@@ -46,6 +46,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description)
+    params.require(:item).permit(:name, :description, :visible_to_owner, :purchased, :purchased_by)
   end
 end

@@ -14,14 +14,14 @@
 <%= link_to 'Back', lists_path %> |
 <%= link_to 'Add Item', new_list_item_path(@list) %>
 
-<% @list_items.each do |list_item| %>
+<% @list.items.each do |item| %>
   <p>
     <strong>Name:</strong>
-    <%= list_item.name %>
+    <%= item.name %>
   </p>
   <p>
     <strong>Description:</strong>
-    <%= list_item.description %>
+    <%= item.description %>
   </p>
-  <%= link_to 'Edit Item', edit_list_item_path(@list, list_item.item) %>
+  <%= link_to 'Edit Item', edit_list_item_path(@list, item) %>
 <% end %>

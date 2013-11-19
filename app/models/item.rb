@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
-  has_many :list_items
+  belongs_to :list
 
   validates :name, presence: true
+  validates :list, presence: true
+  # validates :visible_to_owner, presence: true
 
 end
