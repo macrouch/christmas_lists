@@ -32,7 +32,7 @@ feature 'User edits an item' do
     create_list_with 'Test List', 'testuser'
     click_link 'Add Item'
     create_item_with 'Item 1', 'Test item for my list'
-    click_link 'Edit Item'
+    click_link 'Item 1'
   end
 
   scenario 'with valid name and description' do

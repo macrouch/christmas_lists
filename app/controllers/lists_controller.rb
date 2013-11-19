@@ -22,7 +22,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to @list }
+        format.html { redirect_to lists_url }
       else
         format.html { render action: 'new' }
       end
@@ -32,7 +32,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to @list }
+        format.html { redirect_to lists_url }
       else
         format.html { render action: 'edit' }
       end

@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @list }
+        format.html { redirect_to lists_url }
       else
         format.html { render action: 'new'}
       end
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @list }
+        format.html { redirect_to lists_url }
       else
         format.html { render action: 'edit' }
       end

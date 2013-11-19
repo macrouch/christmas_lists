@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class='navbar navbar-inverse navbar-fixed-top'>
+  <div class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
     <div class='navbar-inner'>
       <div clas='container'>
         <button type='button' class='btn btn-navbar' data-toggle='collapse' data-target='.nav-collapse'>
@@ -21,6 +21,9 @@
           <ul class='nav'>
             <li>
               <%= link_to 'View Lists', root_url %>
+            </li>
+            <li>
+              <%= link_to 'New List', new_list_path %>
             </li>
           </ul>
           <ul class='nav pull-right'>
