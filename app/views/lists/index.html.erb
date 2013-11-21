@@ -16,7 +16,7 @@
         <% list.items.each do |item| %>
           <p><%= link_to item.name, edit_list_item_path(list, item) %></p>
           <ul>
-            <li><%= item.description %></li>
+            <li><%= auto_link(item.description, :all, target: '_blank') %></li>
           </ul>
         <% end %>
       </div>

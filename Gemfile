@@ -27,7 +27,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+# gem 'jbuilder', '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -71,3 +71,5 @@ gem "capistrano-db-tasks", group: :development, require: false
 gem 'omniauth-google-oauth2'
 gem 'omniauth-identity'
 gem 'figaro'
+
+gem 'rinku'
