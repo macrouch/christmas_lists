@@ -1,0 +1,6 @@
+<% unless current_user == list.user && !item.visible_to_owner %>
+  <%= item_link(list, item) %>
+  <ul>
+    <li><%= auto_link(item.description, :all, target: '_blank') %></li>
+  </ul>
+<% end %>

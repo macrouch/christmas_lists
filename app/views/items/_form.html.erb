@@ -21,6 +21,23 @@
     <%= f.text_area :description %>
   </div>
 
+  <% unless current_user == @list.user %>
+    <div class='field'>
+      <%= f.label :visible_to_owner, 'Visible to list owner?' %>
+      <%= f.check_box :visible_to_owner %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :purchased, 'Purchased?' %>
+      <%= f.check_box :purchased %>
+    </div>
+
+    <div class='field'>
+      <%= f.label :purchased_by %>
+      <%= f.text_field :purchased_by %>
+    </div>
+  <% end %>
+
   <div class='actions'>
     <%= f.submit %>
   </div>

@@ -24,6 +24,14 @@ feature 'User creates item' do
     create_item_with '', ''
     page.should have_content "Name can't be blank"
   end
+
+  scenario 'without item being visible to owner' do
+    create_list_with 'Second List', ''
+    within('#list_1') do
+      click_link 'Add Item'
+    end
+    create_item_in_another_list_with 'Secret Item', 'item description', false, false
+  end
 end
 
 feature 'User edits an item' do
@@ -45,4 +53,35 @@ feature 'User edits an item' do
     edit_item_with '', ''
     page.should have_content "Name can't be blank"
   end
+end
+
+feature 'User marks item as purcased' do
+  background do
+    sign_up_with 'testuser', 'test@example.com', 'password'
+    create_list_with 'Test List', 'testuser'
+    create_list_with 'Second List', ''
+    within('#list_1') do
+      click_link 'Add Item'
+    end
+    create_item_in_another_list_with 'Item 1', 'item description', true, false
+  end
+
+  scenario 'purchases normal item' do
+    click_link 'Item 1'
+    purchase_item
+    page.should have_css('i.icon-check')
+  end
+
+  scenario 'purchases secret item' do
+    within('#list_1') do
+      click_link 'Add Item'
+    end
+    create_item_in_another_list_with 'Secret Item', 'item description', false, false
+    click_link 'Secret Item'
+    purchase_item
+    page.should have_css('i.icon-exclamation-sign')
+    page.should have_css('i.icon-check')
+  end
+
+
 end

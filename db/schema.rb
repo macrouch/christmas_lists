@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119014007) do
+ActiveRecord::Schema.define(version: 20131122001303) do
 
   create_table "identities", force: true do |t|
     t.string   "name"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20131119014007) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "list_id"
-    t.boolean  "visible_to_owner"
+    t.boolean  "visible_to_owner", default: true
     t.boolean  "purchased"
     t.string   "purchased_by"
   end

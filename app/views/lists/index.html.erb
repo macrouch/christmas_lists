@@ -9,15 +9,12 @@
         <div class='row'>
       <% end %>
 
-      <div class='span3 list'>
+      <div id='list_<%= index %>' class='span3 list'>
         <h3><%= list.name %></h3>
         <p>Owner: <%= list.user.name if list.user %></p>
         <p><%= link_to 'Add Item', new_list_item_path(list) %> | <%= link_to 'Edit List', edit_list_path(list) %></p>
         <% list.items.each do |item| %>
-          <p><%= link_to item.name, edit_list_item_path(list, item) %></p>
-          <ul>
-            <li><%= auto_link(item.description, :all, target: '_blank') %></li>
-          </ul>
+          <%= render partial: 'item_view', locals: {list: list, item: item} %>
         <% end %>
       </div>
     <% end %>
