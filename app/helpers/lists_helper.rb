@@ -20,4 +20,9 @@ module ListsHelper
 
     raw(html)
   end
+
+  # Convert a list name to html ID
+  def name_to_id(name)
+    name.downcase.gsub(' ', '_')
+  end
 end

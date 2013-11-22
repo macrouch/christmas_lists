@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+include ListsHelper
+
 feature 'User creates item' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
@@ -27,7 +29,7 @@ feature 'User creates item' do
 
   scenario 'without item being visible to owner' do
     create_list_with 'Second List', ''
-    within('#list_1') do
+    within("##{name_to_id('Second List')}") do
       click_link 'Add Item'
     end
     create_item_in_another_list_with 'Secret Item', 'item description', false, false
@@ -60,7 +62,7 @@ feature 'User marks item as purcased' do
     sign_up_with 'testuser', 'test@example.com', 'password'
     create_list_with 'Test List', 'testuser'
     create_list_with 'Second List', ''
-    within('#list_1') do
+    within("##{name_to_id('Second List')}") do
       click_link 'Add Item'
     end
     create_item_in_another_list_with 'Item 1', 'item description', true, false
@@ -73,7 +75,7 @@ feature 'User marks item as purcased' do
   end
 
   scenario 'purchases secret item' do
-    within('#list_1') do
+    within("##{name_to_id('Second List')}") do
       click_link 'Add Item'
     end
     create_item_in_another_list_with 'Secret Item', 'item description', false, false

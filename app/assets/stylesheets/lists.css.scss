@@ -13,4 +13,19 @@ body {
 
 .span3 {
   word-wrap: break-word;
+  margin-bottom: 15px;
+}
+
+.list > div {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.list-header {
+  text-align: center;
+}
+
+.back-to-top {
+  text-align: right;
 }
