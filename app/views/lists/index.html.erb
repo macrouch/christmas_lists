@@ -1,5 +1,12 @@
 <h1>View Lists</h1>
-
+<div class='hidden-desktop hidden-tablet'>
+  Table of Contents
+  <ul>
+    <% @lists.each_with_index do |list, index| %>
+      <li><%= link_to list.name, "#list_#{index}" %></li>
+    <% end %>
+  </ul>
+</div>
 <div class='container'>
   <div class='row'>
     <% @lists.each_with_index do |list, index| %>
@@ -10,12 +17,17 @@
       <% end %>
 
       <div id='list_<%= index %>' class='span3 list'>
-        <h3><%= list.name %></h3>
-        <p>Owner: <%= list.user.name if list.user %></p>
-        <p><%= link_to 'Add Item', new_list_item_path(list) %> | <%= link_to 'Edit List', edit_list_path(list) %></p>
-        <% list.items.each do |item| %>
-          <%= render partial: 'item_view', locals: {list: list, item: item} %>
-        <% end %>
+        <div>
+          <h3><%= list.name %></h3>
+          <p>Owner: <%= list.user.name if list.user %></p>
+          <p><%= link_to 'Add Item', new_list_item_path(list) %> | <%= link_to 'Edit List', edit_list_path(list) %></p>
+          <% list.items.each do |item| %>
+            <%= render partial: 'item_view', locals: {list: list, item: item} %>
+          <% end %>
+          <p class='hidden-desktop hidden-tablet'>
+            <%= link_to 'Back to top', '#', class: 'icon-chevron-up' %>
+          </p>
+        </div>
       </div>
     <% end %>
   </div>
