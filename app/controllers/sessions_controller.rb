@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    redirect_to login_url, alert: 'Authentication failed, please try again'
+    redirect_to login_url, flash: { error: 'Authentication failed, please try again'}
   end
 end
