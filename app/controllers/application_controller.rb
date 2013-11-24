@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :is_logged_in
+  before_filter :set_tracker
 
   helper_method :current_user
 
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
       flash[:error] = "You must be logged in"
       redirect_to login_url
     end
+  end
+
+  def set_tracker
+    @tracking_id = ENV["GOOGLE_TRACKER"]
   end
 end
