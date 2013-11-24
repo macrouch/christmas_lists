@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  include ListsHelper
+  
   before_action :set_list, only: [:show, :edit, :update]
 
   def index
@@ -22,7 +24,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to lists_url, notice: 'List created' }
+        format.html { redirect_to lists_url(anchor: name_to_id(@list.name)), notice: 'List created' }
       else
         format.html { render action: 'new' }
       end
@@ -32,7 +34,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to lists_url, notice: 'List updated' }
+        format.html { redirect_to lists_url(anchor: name_to_id(@list.name)), notice: 'List updated' }
       else
         format.html { render action: 'edit' }
       end

@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  include ListsHelper
+
   before_action :set_list
   before_action :set_item, only: [:edit, :update, :destroy]
 
@@ -15,7 +17,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to lists_url, notice: 'Item created' }
+        format.html { redirect_to lists_url(anchor: name_to_id(@item.list.name)), notice: 'Item created' }
       else
         format.html { render action: 'new'}
       end
@@ -25,7 +27,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to lists_url, notice: 'Item updated' }
+        format.html { redirect_to lists_url(anchor: name_to_id(@item.list.name)), notice: 'Item updated' }
       else
         format.html { render action: 'edit' }
       end
