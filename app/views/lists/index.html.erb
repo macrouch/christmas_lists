@@ -23,9 +23,11 @@
             <p class='owner'>Owner: <%= list.user.name if list.user %></p>
             <p class='actions'><%= link_to 'Add Item', new_list_item_path(list), class: 'btn' %> <%= link_to 'Edit List', edit_list_path(list), class: 'btn' %></p>
           </div>
-          <% list.items.each do |item| %>
-            <%= render partial: 'item_view', locals: {list: list, item: item} %>
-          <% end %>
+          <dl>
+            <% list.items.each do |item| %>
+              <%= render partial: 'item_view', locals: {list: list, item: item} %>
+            <% end %>
+          </dl>
             <div class='hidden-desktop hidden-tablet back-to-top'>
             <%= link_to 'Back to top', '#', class: 'icon-chevron-up' %>
             </div>
