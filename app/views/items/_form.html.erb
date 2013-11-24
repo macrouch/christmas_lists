@@ -2,7 +2,7 @@
   <fieldset>
     <legend>
       <% if params[:action] == 'new' %>
-        New List
+        New Item For <%= @list.name %>
       <% else %>
         Editing <%= @item.name %>
       <% end %>

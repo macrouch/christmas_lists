@@ -1,10 +1,10 @@
 <div class='hidden-desktop hidden-tablet'>
-  Table of Contents
-  <ul>
+  <dl>
+    <dt>Table of Contents</dt>
     <% @lists.each do |list| %>
-      <li><%= link_to list.name, "##{name_to_id(list.name)}" %></li>
+      <dd><%= link_to list.name, "##{name_to_id(list.name)}" %></dd>
     <% end %>
-  </ul>
+  </dl>
 </div>
 <div class='container'>
   <div class='row'>
