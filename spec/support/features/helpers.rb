@@ -22,7 +22,7 @@ module Features
       click_link 'Change Password'
       fill_in 'Password', with: password
       fill_in 'Password confirmation', with: confirmation
-      click_button 'Update User'
+      click_button 'Update Password'
     end
 
     def sign_out
