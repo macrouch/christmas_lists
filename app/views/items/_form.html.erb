@@ -23,8 +23,8 @@
 
   <% unless current_user == @list.user %>
     <div class='field'>
-      <%= f.label :visible_to_owner, 'Visible to list owner?' %>
-      <%= f.check_box :visible_to_owner %>
+      <%= f.label :hidden_from_owner, 'Hide from list owner?' %>
+      <%= f.check_box :hidden_from_owner %>
     </div>
 
     <div class='field'>

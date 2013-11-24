@@ -59,10 +59,10 @@ module Features
       click_button 'Create Item'
     end
 
-    def create_item_in_another_list_with(name, description, visible_to_owner=true, purchased=false, purchased_by=nil)
+    def create_item_in_another_list_with(name, description, hidden_from_owner=true, purchased=false, purchased_by=nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
-      visible_to_owner ? check('Visible to list owner?') : uncheck('Visible to list owner?')
+      hidden_from_owner ? check('Hide from list owner?') : uncheck('Hide from list owner?')
       purchased ? check('Purchased?') : uncheck('Purchased?')
       fill_in 'Purchased by', with: purchased_by
       click_button 'Create Item'

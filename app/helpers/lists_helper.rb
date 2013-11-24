@@ -3,7 +3,7 @@ module ListsHelper
   # if the item is hidden from the owner or purchased
   def item_link(list, item)
     classes = []
-    if current_user != list.user && !item.visible_to_owner
+    if current_user != list.user && item.hidden_from_owner
       classes << 'icon-exclamation-sign'
     end
 
