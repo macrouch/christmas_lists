@@ -13,7 +13,7 @@ module ListsHelper
 
     html = ''
     classes.each do |c|
-      html += "#{content_tag 'i', '', class: c}"
+      html += "#{content_tag 'i', '', class: c} "
     end
 
     html += "#{link_to item.name, edit_list_item_path(list, item)}"
