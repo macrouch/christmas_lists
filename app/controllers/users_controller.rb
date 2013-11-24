@@ -24,8 +24,4 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @identity = Identity.find(@user.uid)
   end
-
-  def user_params
-    params.require(:user).permit(:password, :password_confirmation)
-  end
 end

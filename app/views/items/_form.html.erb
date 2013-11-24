@@ -1,44 +1,64 @@
-<%= form_for([@list, @item]) do |f| %>
-  <% if @item.errors.any? %>
-    <div class='error_explanation'>
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-      <ul>
-      <% @item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<%= form_for([@list, @item], html: {class: 'form-horizontal'}) do |f| %>
+  <fieldset>
+    <legend>
+      <% if params[:action] == 'new' %>
+        New List
+      <% else %>
+        Editing <%= @item.name %>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </legend>
 
-  <div class='field'>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <% if @item.errors.any? %>
+      <div class='error_explanation'>
+        <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
-  <div class='field'>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
+        <ul>
+        <% @item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <% unless current_user == @list.user %>
-    <div class='field'>
-      <%= f.label :hidden_from_owner, 'Hide from list owner?' %>
-      <%= f.check_box :hidden_from_owner %>
-    </div>
-
-    <div class='field'>
-      <%= f.label :purchased, 'Purchased?' %>
-      <%= f.check_box :purchased %>
+    <div class='control-group'>
+      <%= f.label :name, class: 'control-label' %>
+      <div class='controls'>
+        <%= f.text_field :name %>
+      </div>
     </div>
 
-    <div class='field'>
-      <%= f.label :purchased_by %>
-      <%= f.text_field :purchased_by %>
+    <div class='control-group'>
+      <%= f.label :description, class: 'control-label' %>
+      <div class='controls'>
+        <%= f.text_area :description %>
+      </div>
     </div>
-  <% end %>
 
-  <div class='actions'>
-    <%= f.submit class: 'btn' %>
+    <% unless current_user == @list.user %>
+      <div class='control-group'>
+        <%= f.label :hidden_from_owner, 'Hide item from list owner', class: 'control-label' %>
+        <div class='controls'>
+          <%= f.check_box :hidden_from_owner %>
+        </div>
+      </div>
+
+      <div class='control-group'>
+        <%= f.label :purchased, 'Is the item purchased', class: 'control-label' %>
+        <div class='controls'>
+          <%= f.check_box :purchased %>
+        </div>
+      </div>
+
+      <div class='control-group'>
+        <%= f.label :purchased_by, 'Who purchased the item', class: 'control-label' %>
+        <div class='controls'>
+          <%= f.text_field :purchased_by %>
+        </div>
+      </div>
+    <% end %>
+
+  <div class='form-actions'>
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', lists_path, class: 'btn' %>
   </div>
 <% end %>
