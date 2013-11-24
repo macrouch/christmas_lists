@@ -11,6 +11,7 @@ feature 'User creates item' do
   scenario 'with valid name and description' do
     click_link 'Add Item'
     create_item_with 'Item 1', 'Test item for my list'
+    page.should have_content 'Item created'
     page.should have_content 'Item 1'
     page.should have_content 'Test item for my list'
   end
@@ -18,6 +19,7 @@ feature 'User creates item' do
   scenario 'with valid name and no description' do
     click_link 'Add Item'
     create_item_with 'Item 1', ''
+    page.should have_content 'Item created'
     page.should have_content 'Item 1'
   end
 
@@ -33,6 +35,7 @@ feature 'User creates item' do
       click_link 'Add Item'
     end
     create_item_in_another_list_with 'Secret Item', 'item description', false, false
+    page.should have_css('i.icon-exclamation-sign')
   end
 end
 
@@ -47,6 +50,7 @@ feature 'User edits an item' do
 
   scenario 'with valid name and description' do
     edit_item_with 'Item 1 edit', 'Test item for my list edit'
+    page.should have_content 'Item updated'
     page.should have_content 'Item 1 edit'
     page.should have_content 'Test item for my list edit'
   end
@@ -71,6 +75,7 @@ feature 'User marks item as purcased' do
   scenario 'purchases normal item' do
     click_link 'Item 1'
     purchase_item
+    page.should have_content 'Item updated'
     page.should have_css('i.icon-check')
   end
 
@@ -81,6 +86,7 @@ feature 'User marks item as purcased' do
     create_item_in_another_list_with 'Secret Item', 'item description', false, false
     click_link 'Secret Item'
     purchase_item
+    page.should have_content 'Item updated'
     page.should have_css('i.icon-exclamation-sign')
     page.should have_css('i.icon-check')
   end

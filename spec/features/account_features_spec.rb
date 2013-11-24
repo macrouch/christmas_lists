@@ -20,7 +20,7 @@ feature 'Visitor signs up' do
   end
 end
 
-feature 'user signs in' do
+feature 'User signs in' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'  
     sign_out    
@@ -36,5 +36,24 @@ feature 'user signs in' do
     sign_in_with 'test@example.com', 'passwrd'
     page.should have_content 'Authentication failed, please try again'
     page.should have_content 'Create an account or login below.'    
+  end
+end
+
+feature 'User changes password' do
+  background do
+    sign_up_with 'testuser', 'test@example.com', 'password'
+  end
+
+  scenario 'successfully changes password' do
+    update_password 'newPassword', 'newPassword'
+    page.should have_content 'Password successfully changed'
+    sign_out
+    sign_in_with 'test@example.com', 'newPassword'
+    page.should have_content 'Signed in'
+  end
+
+  scenario 'passwords dont match' do
+    update_password 'newPassword', 'password'
+    page.should have_content "Password confirmation doesn't match Password"
   end
 end

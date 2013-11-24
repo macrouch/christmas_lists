@@ -17,6 +17,14 @@ module Features
       click_button "Login"
     end
 
+    def update_password(password, confirmation)
+      visit root_url
+      click_link 'Change Password'
+      fill_in 'Password', with: password
+      fill_in 'Password confirmation', with: confirmation
+      click_button 'Update User'
+    end
+
     def sign_out
       visit root_url
       click_link "Logout"

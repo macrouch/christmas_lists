@@ -2,8 +2,10 @@ ChristmasLists::Application.routes.draw do
 
   post "/auth/:provider/callback" => "sessions#create"
   get "/auth/failure" => "sessions#failure"
-  get "/logout" => "sessions#destroy", :as => :logout
-  get "/login" => "sessions#new", :as => :login
+  get "/logout" => "sessions#destroy", as: :logout
+  get "/login" => "sessions#new", as: :login
+  
+  resources :users, only: [:edit, :update]
   resources :identities
   resources :lists do
     resources :items, only: [:new, :edit, :update, :create, :destroy]
