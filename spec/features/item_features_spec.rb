@@ -93,3 +93,18 @@ feature 'User marks item as purcased' do
 
 
 end
+
+feature 'User deletes an item' do
+  background do
+    sign_up_with 'testuser', 'test@example.com', 'password'
+    create_list_with 'Test List', 'testuser'
+    click_link 'Add Item'
+    create_item_with 'Item 1', 'Test item for my list'
+    click_link 'Item 1'    
+  end
+
+  scenario 'deletes an item' do
+    click_link 'Delete Item'
+    page.should have_content 'Item deleted'
+  end
+end

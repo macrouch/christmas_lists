@@ -35,6 +35,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @item.destroy
+
+    respond_to do |format|
+      format.html { redirect_to lists_url(anchor: name_to_id(@item.list.name)), notice: 'Item deleted' }
+    end
   end
 
   private

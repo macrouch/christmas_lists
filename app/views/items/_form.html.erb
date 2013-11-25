@@ -59,6 +59,7 @@
 
   <div class='form-actions'>
     <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Delete Item', list_item_path(@list, @item), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger' unless @item.id.nil? %>
     <%= link_to 'Cancel', lists_path, class: 'btn' %>
   </div>
 <% end %>
