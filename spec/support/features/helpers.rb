@@ -79,5 +79,10 @@ module Features
       fill_in 'Who purchased the item', with: 'testuser'
       click_button 'Update Item'
     end
+
+    def create_item_comment(comment, hidden)
+      fill_in 'New Comment', with: comment
+      hidden ? check('Private') : uncheck('Private')
+    end
   end
 end

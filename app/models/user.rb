@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :lists
+  has_many :item_comments
 
   validates :name, presence: true
   validates :uid, presence: true

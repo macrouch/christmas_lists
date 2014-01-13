@@ -61,7 +61,7 @@ feature 'User edits an item' do
   end
 end
 
-feature 'User marks item as purcased' do
+feature 'User marks item as purchased' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
     create_list_with 'Test List', 'testuser'
@@ -90,8 +90,6 @@ feature 'User marks item as purcased' do
     page.should have_css('i.icon-exclamation-sign')
     page.should have_css('i.icon-check')
   end
-
-
 end
 
 feature 'User deletes an item' do
@@ -100,11 +98,39 @@ feature 'User deletes an item' do
     create_list_with 'Test List', 'testuser'
     click_link 'Add Item'
     create_item_with 'Item 1', 'Test item for my list'
-    click_link 'Item 1'    
+    click_link 'Item 1'
   end
 
   scenario 'deletes an item' do
     click_link 'Delete Item'
     page.should have_content 'Item deleted'
   end
+end
+
+feature 'User adds comment to an item' do
+  background do
+    sign_up_with 'testuser', 'test@example.com', 'password'
+    create_list_with 'Test List', ''
+    within("##{name_to_id('Test List')}") do
+      click_link 'Add Item'
+    end
+    create_item_in_another_list_with 'Item 1', 'item description', true, false
+  end
+
+  scenario 'adds a public comment' do
+    create_item_comment 'Everyone can see this comment!', false
+    page.should have_content 'Item Updated'
+
+    click_link 'Item 1'
+    page.should have_content 'Everyone can see this comment!'
+  end
+
+  scenario 'adds a private comment' do
+    create_item_comment 'Only I can see this comment!', true
+    page.should have_content 'Item Updated'
+
+    click_link 'Item 1'
+    page.should have_content 'Only I can see this comment!'    
+  end
+  
 end
