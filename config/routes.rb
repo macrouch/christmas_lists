@@ -10,6 +10,7 @@ ChristmasLists::Application.routes.draw do
   resources :lists do
     resources :items, only: [:new, :edit, :update, :create, :destroy]
   end
+  resources :item_comments, only: [:create]
 
   root 'lists#index'
   # The priority is based upon order of creation: first created -> highest priority.

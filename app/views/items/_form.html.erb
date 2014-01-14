@@ -55,11 +55,64 @@
           <%= f.text_field :purchased_by %>
         </div>
       </div>
+
+      <div class='item-comments'>
+        <label class='control-label'>Comments</label>
+        <div class='controls'>
+          <dl>
+            <% @item.item_comments.each do |comment| %>
+              <% if !comment.private || (comment.private && comment.user == current_user) %>
+                <dt><%= comment.user.name %><%= " (Private)" if comment.private %></dt>
+                <dd><%= comment.comment %></dd>
+              <% end %>
+            <% end %>
+          </dl>
+          <button class='btn btn-primary' data-toggle='modal' data-target='#comment-modal'>Add New Comment</button>
+        </div>
+      </div>
     <% end %>
 
   <div class='form-actions'>
     <%= f.submit class: 'btn btn-primary' %>
     <%= link_to 'Delete Item', list_item_path(@list, @item), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger' unless @item.id.nil? %>
     <%= link_to 'Cancel', lists_path, class: 'btn' %>
+  </div>
+<% end %>
+
+<% unless current_user == @list.user %>
+  <div class='modal fade' id='comment-modal' tabindex="-1" role='dialog' aria-labelledby="comment-modal-title" aria-hidden="true">
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="comment-modal-title">Add New Comment</h4>
+        </div>
+        <%= form_for(@item_comment, html: {class: 'form-horizontal'}) do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <div class="modal-body">
+
+            <div class='control-group'>
+              <%= f.label :comment, class: 'control-label' %>
+              <div class='controls'>
+                <%= f.text_area :comment %>
+              </div>
+            </div>
+
+            <div class='control-group'>
+              <%= f.label :private, 'Keep comment private to you?', class: 'control-label' %>
+              <div class='controls'>
+                <%= f.check_box :private %>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit 'Add Comment', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>

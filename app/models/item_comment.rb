@@ -5,4 +5,6 @@ class ItemComment < ActiveRecord::Base
   validates :comment, presence: true
   validates :user_id, presence: true
   validates :item_id, presence: true
+
+  delegate :list, to: :item
 end

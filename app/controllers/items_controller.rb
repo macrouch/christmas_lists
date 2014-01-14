@@ -50,6 +50,7 @@ class ItemsController < ApplicationController
 
   def set_list
     @list = List.find(params[:list_id])
+    @item_comment = ItemComment.new
   end
 
   def item_params

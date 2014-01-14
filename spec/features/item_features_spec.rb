@@ -115,22 +115,19 @@ feature 'User adds comment to an item' do
       click_link 'Add Item'
     end
     create_item_in_another_list_with 'Item 1', 'item description', true, false
+    click_link 'Item 1'
   end
 
-  scenario 'adds a public comment' do
+  scenario 'adds a public comment', js: true do
     create_item_comment 'Everyone can see this comment!', false
-    page.should have_content 'Item Updated'
-
-    click_link 'Item 1'
-    page.should have_content 'Everyone can see this comment!'
+    page.should have_content 'Comment created'
+    page.should have_content 'testuser Everyone can see this comment!'
   end
 
-  scenario 'adds a private comment' do
+  scenario 'adds a private comment', js: true do
     create_item_comment 'Only I can see this comment!', true
-    page.should have_content 'Item Updated'
-
-    click_link 'Item 1'
-    page.should have_content 'Only I can see this comment!'    
+    page.should have_content 'Comment created'
+    page.should have_content 'testuser (Private) Only I can see this comment!'    
   end
   
 end
