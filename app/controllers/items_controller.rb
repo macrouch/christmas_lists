@@ -25,11 +25,15 @@ class ItemsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to lists_url(anchor: name_to_id(@item.list.name)), notice: 'Item updated' }
-      else
-        format.html { render action: 'edit' }
+    if params[:remove_image]
+      remove_image
+    else
+      respond_to do |format|
+        if @item.update(item_params)
+          format.html { redirect_to lists_url(anchor: name_to_id(@item.list.name)), notice: 'Item updated' }
+        else
+          format.html { render action: 'edit' }
+        end
       end
     end
   end
@@ -39,6 +43,18 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to lists_url(anchor: name_to_id(@item.list.name)), notice: 'Item deleted' }
+    end
+  end
+
+  def remove_image
+    @item.image = nil
+
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to edit_list_item_path(@list, @item), notice: 'Image removed' }
+      else
+        format.html { redirect_to edit_list_item_path(@list, @item), alert: 'Image removed failed' }
+      end
     end
   end
 
@@ -54,6 +70,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :hidden_from_owner, :purchased, :purchased_by)
+    params.require(:item).permit(:name, :description, :hidden_from_owner, :purchased, :purchased_by, :image)
   end
 end

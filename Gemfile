@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'fabrication'
   gem 'capybara'
+  gem 'capybara-screenshot'
   gem 'launchy'
   gem 'simplecov'
   gem 'guard-rspec'
@@ -74,3 +75,4 @@ gem 'omniauth-identity'
 gem 'figaro'
 
 gem 'rinku'
+gem 'paperclip'

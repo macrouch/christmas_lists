@@ -11,14 +11,14 @@ module Features
     end
 
     def sign_in_with (email, password)
-      visit root_url
+      visit root_path
       fill_in "Email", :with => email
       fill_in "Password", :with => password
       click_button "Login"
     end
 
     def update_password(password, confirmation)
-      visit root_url
+      visit root_path
       click_link 'Change Password'
       fill_in 'Password', with: password
       fill_in 'Password confirmation', with: confirmation
@@ -26,7 +26,7 @@ module Features
     end
 
     def sign_out
-      visit root_url
+      visit root_path
       click_link "Logout"
     end
 
@@ -53,9 +53,10 @@ module Features
     end
 
     ### Item Helpers
-    def create_item_with(name, description)
+    def create_item_with(name, description, image_url=nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
+      fill_in 'New Image Url', with: image_url if image_url
       click_button 'Create Item'
     end
 
@@ -68,9 +69,10 @@ module Features
       click_button 'Create Item'
     end
 
-    def edit_item_with(name, description)
+    def edit_item_with(name, description, image_url=nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
+      fill_in 'New Image Url', with: image_url if image_url
       click_button 'Update Item'
     end
 

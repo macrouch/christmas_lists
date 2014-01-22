@@ -34,6 +34,23 @@
       </div>
     </div>
 
+    <div class='control-group'>
+      <label class='control-label'>Current Image</label>
+      <div class='controls'>
+        <%= image_tag @item.image.url(:medium) %>
+      </div>
+      <div class='controls'>
+        <%= f.submit 'Remove Image', class: 'btn btn-danger remove-image-button', name: 'remove_image' %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <%= f.label :image, 'New Image Url', class: 'control-label' %>
+      <div class='controls'>
+      <%= f.text_field :image, value: nil %>
+      </div>
+    </div>
+
     <% unless current_user == @list.user %>
       <div class='control-group'>
         <%= f.label :hidden_from_owner, 'Hide item from list owner', class: 'control-label' %>

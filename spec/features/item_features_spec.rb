@@ -37,6 +37,15 @@ feature 'User creates item' do
     create_item_in_another_list_with 'Secret Item', 'item description', false, false
     page.should have_css('i.icon-exclamation-sign')
   end
+
+  scenario 'with an image' do
+    click_link 'Add Item'
+    create_item_with 'Item with image', '', 'https://www.google.com/images/srpr/logo11w.png'
+    page.should have_content 'Item created'
+
+    click_link 'Item with image'
+    page.should have_xpath("//img[contains(@src, 'logo11w.png')]")
+  end
 end
 
 feature 'User edits an item' do
@@ -58,6 +67,16 @@ feature 'User edits an item' do
   scenario 'without name' do
     edit_item_with '', ''
     page.should have_content "Name can't be blank"
+  end
+
+  scenario 'removes an image' do
+    edit_item_with 'Item 1 edit', 'Test item for my list edit', 'https://www.google.com/images/srpr/logo11w.png'
+    page.should have_content 'Item updated'
+    click_link 'Item 1 edit'
+    click_button 'Remove Image'
+
+    page.should have_content 'Image removed'
+    page.should have_xpath("//img[contains(@src, 'no_image.png')]")
   end
 end
 
