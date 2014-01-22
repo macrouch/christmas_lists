@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
 
   has_attached_file :image,
     styles: { medium: "300x300>", thumb: "100x100>" },
-    :default_url => ActionController::Base.helpers.asset_path('/assets/no_image.png')
+    :default_url => '/assets/no_image.png'
 
   def image_url=(url)
     self.image = URI.parse(url)
