@@ -32,7 +32,7 @@ module Features
 
     ### List Helpers
     def create_list_with(name, user)
-      visit new_list_path
+      visit new_collection_list_path(Collection.first)
       fill_in 'Name', with: name
       if user == ''
         select 'Select Owner/Not Listed', from: 'Owner'
@@ -88,5 +88,15 @@ module Features
       hidden ? check('Keep comment private to you?') : uncheck('Keep comment private to you?')
       click_button 'Add Comment'
     end
+
+    ### Family Helpers
+    def create_family_with(name, question, answer)
+      visit new_family_path
+      fill_in 'Name', with: name
+      fill_in 'Question', with: question
+      fill_in 'Answer', with: answer
+      click_button 'Create Family'
+    end
+
   end
 end

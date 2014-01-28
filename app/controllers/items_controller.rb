@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to lists_url(anchor: name_to_id(@item.list.name)), notice: 'Item created' }
+        format.html { redirect_to collection_url(@collection, anchor: name_to_id(@item.list.name)), notice: 'Item created' }
       else
         format.html { render action: 'new'}
       end
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     else
       respond_to do |format|
         if @item.update(item_params)
-          format.html { redirect_to lists_url(anchor: name_to_id(@item.list.name)), notice: 'Item updated' }
+          format.html { redirect_to collection_url(@collection, anchor: name_to_id(@item.list.name)), notice: 'Item updated' }
         else
           format.html { render action: 'edit' }
         end
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to lists_url(anchor: name_to_id(@item.list.name)), notice: 'Item deleted' }
+      format.html { redirect_to collection_url(@collection, anchor: name_to_id(@item.list.name)), notice: 'Item deleted' }
     end
   end
 
@@ -51,9 +51,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to edit_list_item_path(@list, @item), notice: 'Image removed' }
+        format.html { redirect_to edit_collection_list_item_path(@collection, @list, @item), notice: 'Image removed' }
       else
-        format.html { redirect_to edit_list_item_path(@list, @item), alert: 'Image removed failed' }
+        format.html { redirect_to edit_collection_list_item_path(@collection, @list, @item), alert: 'Image removed failed' }
       end
     end
   end
@@ -65,6 +65,7 @@ class ItemsController < ApplicationController
   end
 
   def set_list
+    @collection = Collection.where(id: params[:collection_id]).first
     @list = List.find(params[:list_id])
     @item_comment = ItemComment.new
   end

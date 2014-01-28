@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115024954) do
+ActiveRecord::Schema.define(version: 20140122011254) do
+
+  create_table "collections", force: true do |t|
+    t.integer  "family_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "families", force: true do |t|
+    t.string   "name"
+    t.string   "question"
+    t.string   "answer"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "family_members", force: true do |t|
+    t.integer  "family_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "identities", force: true do |t|
     t.string   "name"
@@ -50,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140115024954) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "collection_id"
   end
 
   create_table "users", force: true do |t|

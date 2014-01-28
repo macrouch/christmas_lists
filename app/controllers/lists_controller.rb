@@ -1,30 +1,30 @@
 class ListsController < ApplicationController
   include ListsHelper
   
+  before_action :set_collection, only: [:new, :edit, :create, :update]
   before_action :set_list, only: [:show, :edit, :update]
 
   def index
     @lists = List.all
   end
 
-  def show  
+  def show
   end
 
   def new
     @list = List.new
-    @users = User.all.order(:name)
   end
 
   def edit
-    @users = User.all.order(:name)
   end
 
   def create
     @list = List.new(list_params)
+    @list.collection = @collection
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to lists_url(anchor: name_to_id(@list.name)), notice: 'List created' }
+        format.html { redirect_to collection_url(@collection, anchor: name_to_id(@list.name)), notice: 'List created' }
       else
         format.html { render action: 'new' }
       end
@@ -34,7 +34,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to lists_url(anchor: name_to_id(@list.name)), notice: 'List updated' }
+        format.html { redirect_to collection_url(@collection, anchor: name_to_id(@list.name)), notice: 'List updated' }
       else
         format.html { render action: 'edit' }
       end
@@ -45,6 +45,11 @@ class ListsController < ApplicationController
 
   def set_list
     @list = List.find(params[:id])
+  end
+
+  def set_collection
+    @collection = Collection.where(id: params[:collection_id]).first
+    @users = @collection.family.members
   end
 
   def list_params

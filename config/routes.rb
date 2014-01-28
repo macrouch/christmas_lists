@@ -7,12 +7,18 @@ ChristmasLists::Application.routes.draw do
   
   resources :users, only: [:edit, :update]
   resources :identities
-  resources :lists do
-    resources :items, only: [:new, :edit, :update, :create, :destroy]
-  end
+  # resources :lists do
+  #   resources :items, only: [:new, :edit, :update, :create, :destroy]
+  # end
   resources :item_comments, only: [:create]
+  resources :families
+  resources :collections do
+    resources :lists do
+      resources :items, only: [:new, :edit, :update, :create, :destroy]
+    end
+  end
 
-  root 'lists#index'
+  root 'collections#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

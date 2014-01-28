@@ -22,7 +22,7 @@ end
 
 feature 'User signs in' do
   background do
-    sign_up_with 'testuser', 'test@example.com', 'password'  
+    sign_up_with 'testuser', 'test@example.com', 'password'
     sign_out    
   end
 
@@ -35,7 +35,7 @@ feature 'User signs in' do
   scenario 'with invalid password' do
     sign_in_with 'test@example.com', 'passwrd'
     page.should have_content 'Authentication failed, please try again'
-    page.should have_content 'Create an account or login below.'    
+    page.should have_content 'Create an account or login below.'
   end
 end
 

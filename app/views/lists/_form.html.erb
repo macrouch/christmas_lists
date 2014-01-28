@@ -1,4 +1,4 @@
-<%= form_for(@list, html: {class: 'form-horizontal'}) do |f| %>
+<%= form_for([@collection, @list], html: {class: 'form-horizontal'}) do |f| %>
   <fieldset>
     <legend>
       <% if params[:action] == 'new' %>
@@ -30,12 +30,12 @@
     <div class='control-group'>
       <%= f.label :user_id, 'Owner', class: 'control-label' %>
       <div class='controls'>
-        <%= f.collection_select :user_id, User.all, :id, :name, { include_blank: 'Select Owner/Not Listed' } %>
+        <%= f.collection_select :user_id, @users, :id, :name, { include_blank: 'Select Owner/Not Listed' } %>
       </div>
     </div>
   </fieldset>
   <div class='form-actions'>
     <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to 'Cancel', lists_path, class: 'btn' %>
+    <%= link_to 'Cancel', collection_path(@collection), class: 'btn' %>
   </div>
 <% end %>

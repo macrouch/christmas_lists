@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :lists
   has_many :item_comments
+  has_many :family_members
+  has_many :families, through: :family_members
+  has_one :family
 
   validates :name, presence: true
   validates :uid, presence: true
