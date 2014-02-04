@@ -49,7 +49,7 @@ class ListsController < ApplicationController
 
   def set_collection
     @collection = Collection.where(id: params[:collection_id]).first
-    @users = @collection.family.members
+    @users = @collection.group.members
   end
 
   def list_params

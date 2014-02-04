@@ -1,6 +1,6 @@
-class CreateFamilies < ActiveRecord::Migration
+class CreateGroups < ActiveRecord::Migration
   def change
-    create_table :families do |t|
+    create_table :groups do |t|
       t.string :name
       t.string :question
       t.string :answer

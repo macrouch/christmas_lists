@@ -1,15 +1,15 @@
-<%= form_for @family, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for @group, html: { class: 'form-horizontal' } do |f| %>
   <fieldset>
     <legend>
-      New Family
+      New Group
     </legend>
 
-    <% if @family.errors.any? %>
+    <% if @group.errors.any? %>
       <div class='error_explanation'>
-        <h2><%= pluralize(@family.errors.count, "error") %> prohibited this family from being saved:</h2>
+        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
 
         <ul>
-        <% @family.errors.full_messages.each do |msg| %>
+        <% @group.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>
@@ -39,7 +39,7 @@
 
     <div class='form-actions'>
       <%= f.submit class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', families_path, class: 'btn' %>
+      <%= link_to 'Cancel', groups_path, class: 'btn' %>
     </div>
 
   </fieldset>

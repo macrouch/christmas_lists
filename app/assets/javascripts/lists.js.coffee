@@ -4,3 +4,11 @@
 
 $(document).ready ->
   $("#list_name").focus()
+
+  $(".icon-exclamation-sign").tooltip({
+    title: 'Item hidden from owner'
+  })
+
+  $(".icon-check").tooltip({
+    title: 'Item has been purchased'
+  })

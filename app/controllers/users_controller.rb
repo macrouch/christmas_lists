@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: [:join_group]
 
   def edit    
   end
@@ -14,6 +14,21 @@ class UsersController < ApplicationController
         format.html { redirect_to lists_url, notice: 'Password successfully changed' }
       else
         format.html { render action: 'edit' }
+      end
+    end
+  end
+
+  def join_group
+    @user = current_user
+    @group = Group.where(id: params[:id]).first
+    answer = params[:answer]
+
+    respond_to do |format|
+      if answer.downcase == @group.answer.downcase
+        @user.groups << @group
+        format.html { redirect_to groups_path, notice: 'Group joined' }
+      else
+        format.html { redirect_to join_group_path(@group.id), alert: 'Incorrect answer, try again' }
       end
     end
   end

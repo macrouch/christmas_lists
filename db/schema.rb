@@ -14,23 +14,23 @@
 ActiveRecord::Schema.define(version: 20140122011254) do
 
   create_table "collections", force: true do |t|
-    t.integer  "family_id"
+    t.integer  "group_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "families", force: true do |t|
-    t.string   "name"
-    t.string   "question"
-    t.string   "answer"
+  create_table "group_members", force: true do |t|
+    t.integer  "group_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "family_members", force: true do |t|
-    t.integer  "family_id"
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.string   "question"
+    t.string   "answer"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

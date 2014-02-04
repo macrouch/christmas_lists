@@ -1,8 +1,8 @@
-class Family < ActiveRecord::Base
+class Group < ActiveRecord::Base
   belongs_to :user
   has_many :collections
-  has_many :family_members
-  has_many :members, through: :family_members, source: :user
+  has_many :group_members
+  has_many :members, through: :group_members, source: :user
 
   validates :name, presence: true
   validates :question, presence: true

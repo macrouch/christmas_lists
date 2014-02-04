@@ -89,13 +89,13 @@ module Features
       click_button 'Add Comment'
     end
 
-    ### Family Helpers
-    def create_family_with(name, question, answer)
-      visit new_family_path
+    ### Group Helpers
+    def create_group_with(name, question, answer)
+      visit new_group_path
       fill_in 'Name', with: name
       fill_in 'Question', with: question
       fill_in 'Answer', with: answer
-      click_button 'Create Family'
+      click_button 'Create Group'
     end
 
   end

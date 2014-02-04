@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Family do
+describe Group do
   it { should belong_to :user }
   it { should have_many :collections }
-  it { should have_many :family_members }
-  it { should have_many(:members).through(:family_members) }
+  it { should have_many :group_members }
+  it { should have_many(:members).through(:group_members) }
   it { should validate_presence_of :name }
   it { should validate_presence_of :question }
   it { should validate_presence_of :answer }

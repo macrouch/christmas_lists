@@ -23,14 +23,6 @@
             <li class="divider-vertical"></li>
           </ul>
           <ul class='nav pull-right'>
-            <li class="divider-vertical"></li>
-            <li>
-              <p class='navbar-text'><i class='icon-check'></i> = Item purchased</p>
-            </li>
-            <li class="divider-vertical"></li>
-            <li>
-              <p class='navbar-text'><i class='icon-exclamation-sign'></i> = Item hidden from owner</p>
-            </li>
             <% if current_user.provider == 'identity' %>
               <li class="divider-vertical"></li>
               <li>
@@ -38,9 +30,9 @@
               </li>
             <% end %>
             <li class="divider-vertical"></li>
-              <li>
-                <%= link_to "Logout #{current_user.name}", logout_path %>
-              </li>
+            <li>
+              <%= link_to "Logout #{current_user.name}", logout_path %>
+            </li>
           </ul>
         </div>
       </div>

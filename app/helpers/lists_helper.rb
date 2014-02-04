@@ -13,7 +13,7 @@ module ListsHelper
 
     html = ''
     classes.each do |c|
-      html += "#{content_tag 'i', '', class: c} "
+      html += "#{content_tag 'i', '', class: c, data: {toggle: 'tooltip', placement: 'top'}} "
     end
 
     html += "#{link_to item.name, edit_collection_list_item_path(collection, list, item)}"

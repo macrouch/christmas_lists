@@ -1,0 +1,35 @@
+<%= form_tag("/join_group/#{@group.id}", method: "post", class: 'form-horizontal') do %>
+  <fieldset>
+    <legend>Joining <%= @group.name %></legend>
+    
+    <% if @group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+        <ul>
+        <% @group.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='control-group'>
+      <label class="control-label">Question</label>
+      <div class='controls'>
+        <%= @group.question %>
+      </div>
+    </div>
+
+    <div class='control-group'>
+      <label for="answer" class="control-label">Answer</label>
+      <div class='controls'>
+        <input type="text", id="answer", name="answer" />
+      </div>
+    </div>
+  </fieldset>
+
+  <div class='form-actions'>
+    <%= submit_tag 'Join', class: 'btn btn-primary' %>
+  </div>
+<% end %>

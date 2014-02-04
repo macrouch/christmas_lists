@@ -5,9 +5,9 @@ include ListsHelper
 feature 'User creates item' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
-    create_family_with('Test Family', 'What is 1+2?', '3')
-    visit collections_path
-    click_link '2014'
+    create_group_with('Test Group', 'What is 1+2?', '3')
+    # visit collections_path
+    # click_link '2014'
     create_list_with 'Test List', 'testuser'
   end
 
@@ -37,7 +37,7 @@ feature 'User creates item' do
     within("##{name_to_id('Second List')}") do
       click_link 'Add Item'
     end
-    create_item_in_another_list_with 'Secret Item', 'item description', false, false
+    create_item_in_another_list_with 'Secret Item', 'item description', true, false
     page.should have_css('i.icon-exclamation-sign')
   end
 
@@ -54,9 +54,9 @@ end
 feature 'User edits an item' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
-    create_family_with('Test Family', 'What is 1+2?', '3')
-    visit collections_path
-    click_link '2014'
+    create_group_with('Test Group', 'What is 1+2?', '3')
+    # visit collections_path
+    # click_link '2014'
     create_list_with 'Test List', 'testuser'
     click_link 'Add Item'
     create_item_with 'Item 1', 'Test item for my list'
@@ -89,15 +89,15 @@ end
 feature 'User marks item as purchased' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
-    create_family_with('Test Family', 'What is 1+2?', '3')
-    visit collections_path
-    click_link '2014'
+    create_group_with('Test Group', 'What is 1+2?', '3')
+    # visit collections_path
+    # click_link '2014'
     create_list_with 'Test List', 'testuser'
     create_list_with 'Second List', ''
     within("##{name_to_id('Second List')}") do
       click_link 'Add Item'
     end
-    create_item_in_another_list_with 'Item 1', 'item description', true, false
+    create_item_in_another_list_with 'Item 1', 'item description', false, false
   end
 
   scenario 'purchases normal item' do
@@ -111,7 +111,7 @@ feature 'User marks item as purchased' do
     within("##{name_to_id('Second List')}") do
       click_link 'Add Item'
     end
-    create_item_in_another_list_with 'Secret Item', 'item description', false, false
+    create_item_in_another_list_with 'Secret Item', 'item description', true, false
     click_link 'Secret Item'
     purchase_item
     page.should have_content 'Item updated'
@@ -123,9 +123,9 @@ end
 feature 'User deletes an item' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
-    create_family_with('Test Family', 'What is 1+2?', '3')
-    visit collections_path
-    click_link '2014'
+    create_group_with('Test Group', 'What is 1+2?', '3')
+    # visit collections_path
+    # click_link '2014'
     create_list_with 'Test List', 'testuser'
     click_link 'Add Item'
     create_item_with 'Item 1', 'Test item for my list'
@@ -141,14 +141,14 @@ end
 feature 'User adds comment to an item' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
-    create_family_with('Test Family', 'What is 1+2?', '3')
-    visit collections_path
-    click_link '2014'
+    create_group_with('Test Group', 'What is 1+2?', '3')
+    # visit collections_path
+    # click_link '2014'
     create_list_with 'Test List', ''
     within("##{name_to_id('Test List')}") do
       click_link 'Add Item'
     end
-    create_item_in_another_list_with 'Item 1', 'item description', true, false
+    create_item_in_another_list_with 'Item 1', 'item description', false, false
     click_link 'Item 1'
   end
 

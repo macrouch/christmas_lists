@@ -1,7 +1,9 @@
 class Collection < ActiveRecord::Base
-  belongs_to :family
+  belongs_to :group
   has_many :lists
 
-  validates :family_id, presence: true
+  validates :group_id, presence: true
   validates :name, presence: true
+
+  default_scope { order(:name) }
 end

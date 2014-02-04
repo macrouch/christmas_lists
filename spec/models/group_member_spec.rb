@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Collection do
+describe GroupMember do
   it { should belong_to :group }
-  it { should have_many :lists }
+  it { should belong_to :user }
   it { should validate_presence_of :group_id }
-  it { should validate_presence_of :name }
+  it { should validate_presence_of :user_id }
 end

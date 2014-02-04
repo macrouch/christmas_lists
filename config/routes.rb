@@ -4,6 +4,8 @@ ChristmasLists::Application.routes.draw do
   get "/auth/failure" => "sessions#failure"
   get "/logout" => "sessions#destroy", as: :logout
   get "/login" => "sessions#new", as: :login
+  get "join_group/:id" => "groups#join", as: :join_group
+  post "join_group/:id" => "users#join_group"
   
   resources :users, only: [:edit, :update]
   resources :identities
@@ -11,7 +13,7 @@ ChristmasLists::Application.routes.draw do
   #   resources :items, only: [:new, :edit, :update, :create, :destroy]
   # end
   resources :item_comments, only: [:create]
-  resources :families
+  resources :groups
   resources :collections do
     resources :lists do
       resources :items, only: [:new, :edit, :update, :create, :destroy]

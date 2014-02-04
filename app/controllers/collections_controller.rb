@@ -1,16 +1,19 @@
 class CollectionsController < ApplicationController
   def index
-    @families = current_user.families
-    if @families.empty?
-      redirect_to families_path 
+    @groups = current_user.groups
+    if @groups.empty?
+      redirect_to groups_path
       return
     end
 
-    @collections = @families.first.collections
+    @collections = @groups.first.collections
+
+    redirect_to collection_path(@collections.last)
   end
 
   def show
     @collection = Collection.where(id: params[:id]).first
+    @group = @collection.group
 
     @lists = @collection.lists
   end
