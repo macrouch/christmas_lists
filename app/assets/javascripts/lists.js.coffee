@@ -5,10 +5,10 @@
 $(document).ready ->
   $("#list_name").focus()
 
-  $(".fa-exclamation").tooltip({
+  $(".fa-exclamation-circle").tooltip({
     title: 'Item hidden from owner'
   })
 
-  $(".fa-check").tooltip({
+  $(".fa-check-square-o").tooltip({
     title: 'Item has been purchased'
   })
