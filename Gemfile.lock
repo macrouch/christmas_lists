@@ -69,7 +69,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    commonjs (0.2.7)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
@@ -83,6 +82,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    font-awesome-rails (4.0.3.1)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     fuubar (1.3.2)
       rspec (>= 2.14.0, < 3.1.0)
@@ -109,11 +110,6 @@ GEM
       multi_json (>= 1.5)
     launchy (2.4.2)
       addressable (~> 2.3)
-    less (2.4.0)
-      commonjs (~> 0.2.7)
-    less-rails (2.4.2)
-      actionpack (>= 3.1)
-      less (~> 2.4.0)
     libv8 (3.16.14.3)
     listen (2.4.0)
       celluloid (>= 0.15.2)
@@ -263,11 +259,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.2.8)
-      actionpack (>= 3.1)
-      execjs
-      rails (>= 3.1)
-      railties (>= 3.1)
     tzinfo (0.3.38)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
@@ -291,11 +282,11 @@ DEPENDENCIES
   database_cleaner
   fabrication
   figaro
+  font-awesome-rails
   fuubar
   guard-rspec
   jquery-rails
   launchy
-  less-rails
   meta_request
   omniauth-google-oauth2
   omniauth-identity
@@ -313,5 +304,4 @@ DEPENDENCIES
   simplecov
   sqlite3
   therubyracer
-  twitter-bootstrap-rails
   uglifier (>= 1.3.0)

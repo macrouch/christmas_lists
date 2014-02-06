@@ -1,13 +1,17 @@
-<h1>Groups#index</h1>
-<p>Find me in app/views/groups/index.html.erb</p>
-
+<h3><%= current_user.name %>'s Groups</h3>
 
 <% if @groups.empty? %>
   You don't have any groups! Create one or join one!
 <% else %>
-  Familes:
   <% @groups.each do |group| %>
-    name: <%= group.name %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title"><%= group.name %></div>
+      </div>
+      <div class="panel-body">
+        group stuff!
+      </div>
+    </div>
   <% end %>
 <% end %>
 

@@ -9,14 +9,9 @@
 </head>
 <body>
   <div class='navbar navbar-inverse navbar-static-top'>
-    <div class='navbar-inner'>
-      <div clas='container'>
-        <button type='button' class='btn btn-navbar' data-toggle='collapse' data-target='.nav-collapse'>
-          <span class='icon-bar'></span>
-          <span class='icon-bar'></span>
-          <span class='icon-bar'></span>
-        </button>
-        <%= link_to 'Christmas Lists', root_url, class: 'brand' %>
+    <div clas='container'>
+      <div class='navbar-header'>
+        <%= link_to 'Christmas Lists', root_url, class: 'navbar-brand' %>
       </div>
     </div>
   </div>
@@ -24,11 +19,11 @@
   <div class='container'>
     <%= render partial: "shared/flash_messages", flash: flash %> 
     <div class='row'>
-      <div class="span8 about">
+      <div class="col-md-8 about">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non lectus sed sapien fermentum convallis in vitae sem. Aliquam erat volutpat. Aliquam commodo imperdiet pretium. Phasellus quis ornare tortor. Suspendisse potenti. Duis eget porttitor dui. Proin ipsum libero, sodales vel aliquam eget, fermentum rutrum mauris. Nam at tincidunt felis.</p>
         <p>Donec semper est sit amet tortor tincidunt, et scelerisque metus pharetra. Nulla facilisi. Praesent magna est, faucibus sed massa sed, vehicula semper felis. Donec tincidunt pulvinar mi ac consequat. Quisque consequat accumsan ligula, nec consequat tortor venenatis in. Aliquam hendrerit, neque suscipit tincidunt faucibus, purus nisl feugiat tellus, non porttitor sem magna id neque. Pellentesque semper quis eros eu auctor. Sed elementum tellus erat, in pretium felis fermentum a. In tincidunt consectetur lorem, eget accumsan nulla dapibus at. Nunc non eleifend neque. Donec a elementum diam. Mauris viverra sollicitudin convallis. Sed eu lacus eget mi euismod pellentesque vitae ut elit.</p>
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         <%= yield %>
       </div>
     </div>

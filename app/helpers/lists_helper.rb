@@ -4,11 +4,11 @@ module ListsHelper
   def item_link(collection, list, item)
     classes = []
     if current_user != list.user && item.hidden_from_owner
-      classes << 'icon-exclamation-sign'
+      classes << 'fa fa-exclamation'
     end
 
     if current_user != list.user && item.purchased
-      classes <<'icon-check'
+      classes <<'fa fa-check'
     end
 
     html = ''

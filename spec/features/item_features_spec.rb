@@ -38,7 +38,7 @@ feature 'User creates item' do
       click_link 'Add Item'
     end
     create_item_in_another_list_with 'Secret Item', 'item description', true, false
-    page.should have_css('i.icon-exclamation-sign')
+    page.should have_css('i.fa-exclamation')
   end
 
   scenario 'with an image' do
@@ -104,7 +104,7 @@ feature 'User marks item as purchased' do
     click_link 'Item 1'
     purchase_item
     page.should have_content 'Item updated'
-    page.should have_css('i.icon-check')
+    page.should have_css('i.fa-check')
   end
 
   scenario 'purchases secret item' do
@@ -115,8 +115,8 @@ feature 'User marks item as purchased' do
     click_link 'Secret Item'
     purchase_item
     page.should have_content 'Item updated'
-    page.should have_css('i.icon-exclamation-sign')
-    page.should have_css('i.icon-check')
+    page.should have_css('i.fa-exclamation')
+    page.should have_css('i.fa-check')
   end
 end
 

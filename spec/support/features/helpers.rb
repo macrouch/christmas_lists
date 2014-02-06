@@ -83,7 +83,7 @@ module Features
     end
 
     def create_item_comment(comment, hidden)
-      click_button 'Add New Comment'
+      click_link 'Add New Comment'
       fill_in 'Comment', with: comment
       hidden ? check('Keep comment private to you?') : uncheck('Keep comment private to you?')
       click_button 'Add Comment'
