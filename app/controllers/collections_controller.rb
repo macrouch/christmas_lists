@@ -1,4 +1,8 @@
 class CollectionsController < ApplicationController
+  include SessionsHelper
+
+  before_action :is_user_member, only: [:show]
+
   def index
     @groups = current_user.groups
     if @groups.empty?
@@ -12,9 +16,6 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @collection = Collection.where(id: params[:id]).first
-    @group = @collection.group
-
     @lists = @collection.lists
   end
 

@@ -1,6 +1,8 @@
 class ListsController < ApplicationController
   include ListsHelper
+  include SessionsHelper
   
+  before_action :is_user_member
   before_action :set_collection, only: [:new, :edit, :create, :update]
   before_action :set_list, only: [:show, :edit, :update]
 

@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   include ListsHelper
+  include SessionsHelper
 
+  before_action :is_user_member
   before_action :set_list
   before_action :set_item, only: [:edit, :update, :destroy]
 

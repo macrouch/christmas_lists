@@ -1,4 +1,8 @@
 class ItemCommentsController < ApplicationController
+  include SessionsHelper
+
+  before_action :is_user_member
+
   def create
     @item_comment = ItemComment.new(item_comment_params)
     item = @item_comment.item
