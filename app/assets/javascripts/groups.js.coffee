@@ -4,3 +4,5 @@
 
 $(document).ready ->
   clip = new ZeroClipboard($(".clipboard-button"))
+
+  $(".group-join-link").tooltip()

@@ -41,8 +41,8 @@
                 </ul>
               </div>
               <div id="<%= group.id %>-options" class="tab-pane fade options-tab">
-                <div class="input-group">
-                  <span id="<%= group.id %>-url" class="form-control"><%= join_group_url(group) %></span>
+                <div class="input-group group-join-link" data-toggle="tooltip" title="Share this link to invite people to this group">
+                  <input id="<%= group.id %>-url" class="form-control" value="<%= join_group_url(group) %>" readonly />
                   <span class="input-group-addon clipboard-button" data-clipboard-target='<%= group.id %>-url' title="copy to clipboard"><i class="fa fa-files-o fa-fw"></i></span>
                 </div>
                 <p>
