@@ -19,24 +19,24 @@
         <div class='row'>
       <% end %>
 
-      <div id='<%= name_to_id(list.name) %>' class='col-md-3 list'>
-        <div>
-          <div class='list-header'>
-            <div class="page-header">
-              <h3 class='list-name'><%= list.name %></h3>
+      <div id='<%= name_to_id(list.name) %>' class='panel panel-default col-md-3'>
+          <div class='panel-heading list-header'>
+            <div class="panel-title">
+              <%= list.name %>
             </div>
+          </div>
+          <div class="panel-body">
             <p class='owner'>Owner: <%= list.user.name if list.user %></p>
             <p class='actions'><%= link_to 'Add Item', new_collection_list_item_path(@collection, list), class: 'btn btn-default' %> <%= link_to 'Edit List', edit_collection_list_path(@collection, list), class: 'btn btn-default' %></p>
-          </div>
-          <dl>
-            <% list.items.each do |item| %>
-              <%= render partial: 'item_view', locals: {collection: @collection, list: list, item: item} %>
-            <% end %>
-          </dl>
+            <dl>
+              <% list.items.each do |item| %>
+                <%= render partial: 'item_view', locals: {collection: @collection, list: list, item: item} %>
+              <% end %>
+            </dl>
             <div class='visible-xs visible-sm back-to-top'>
-            <%= link_to 'Back to top', '#', class: 'icon-chevron-up' %>
+            <%= link_to ' Back to top', '#', class: 'fa fa-arrow-up' %>
             </div>
-        </div>
+          </div>
       </div>
     <% end %>
   </div>

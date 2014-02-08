@@ -16,32 +16,36 @@
 
         <div class="panel panel-default col-md-3">
           <div class="panel-heading">
-            <div class="panel-title">
-              <%= group.name %>
-              <%= link_to 'Leave Group', leave_group_path(group), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm pull-right' unless group.user == current_user %>
-            </div>
+            <div class="panel-title"><%= group.name %></div>
           </div>
           <div class="panel-body">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#<%= group.id %>-lists" data-toggle="tab">Lists</a></li>
               <li><a href="#<%= group.id %>-members" data-toggle="tab">Members</a></li>
+              <li><a href="#<%= group.id %>-options" data-toggle="tab">Options</a></li>
             </ul>
 
             <div class="tab-content">
               <div id="<%= group.id %>-lists" class="tab-pane fade in active">
-                    <div class="list-group">
-                      <% group.collections.each do |collection| %>
-                        <%= link_to collection.name, collection, class: 'list-group-item' %>
-                      <% end %>
-                    </div>
+                <div class="list-group">
+                  <% group.collections.each do |collection| %>
+                    <%= link_to collection.name, collection, class: 'list-group-item' %>
+                  <% end %>
+                </div>
               </div>
               <div id="<%= group.id %>-members" class="tab-pane fade">
-                    <ul class="list-group">
-                      <% group.members.each do |member| %>
-                        <li class="list-group-item"><%= member.name %> <%= link_to 'Remove', remove_group_member_path(group, member), data: { confirm: 'Are you sure?' } , class: 'btn btn-danger btn-sm pull-right'  if group.user == current_user && current_user != member %></li>
-                      <% end %>
-                    </ul>
+                <ul class="list-group">
+                  <% group.members.each do |member| %>
+                    <li class="list-group-item"><%= member.name %> <%= link_to 'Remove', remove_group_member_path(group, member), data: { confirm: 'Are you sure?' } , class: 'badge' if group.user == current_user && current_user != member %></li>
+                  <% end %>
+                </ul>
               </div>
+              <div id="<%= group.id %>-options" class="tab-pane fade options-tab">
+                <p>
+                  <%= link_to 'Leave Group', leave_group_path(group), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' unless group.user == current_user %>
+                </p>
+              </div>
+
             </div>
           </div>
         </div>

@@ -2,26 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  /*padding-top: 40px;*/
-}
-@media (max-width: 979px) {
-  body {
-    padding-top: 0px;
-  }
-}
-
-.span3 {
-  word-wrap: break-word;
-  margin-top: 15px;
-}
-
-.list > div {
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 15px;
-}
-
 .list-header {
   text-align: center;
 }
@@ -30,6 +10,15 @@ body {
   text-align: right;
 }
 
-dt {
-  margin-top: 5px;
+.panel.col-md-3 {
+  padding: 0;
+  margin: 0 15px 20px 15px;
+  @media (min-width: 992px) {
+    width: 23%;
+    margin: 0 15px 20px 0;
+  }
+}
+
+.page-header {
+  margin: 20px 0 20px;
 }

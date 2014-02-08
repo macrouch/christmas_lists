@@ -1,5 +1,7 @@
-<h1>New Account</h1>
-<%= form_tag "/auth/identity/register" do %>
+<%= form_tag "/auth/identity/register", class: 'form-horizontal' do %>
+  <fieldset>
+    <legend>New Account</legend>
+  </fieldset>
   <% if @identity && @identity.errors.any? %>
     <div class="error_messages">
       <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
@@ -10,21 +12,33 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= label_tag :name %><br>
-    <%= text_field_tag :name, @identity.try(:name) %>
+  <div class="form-group">
+    <%= label_tag :name, 'Name', class: 'col-sm-4 control-label' %>
+    <div class="col-sm-8">
+      <%= text_field_tag :name, @identity.try(:name), class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= label_tag :email %><br>
-    <%= text_field_tag :email, @identity.try(:email) %>
+  <div class="form-group">
+    <%= label_tag :email, 'Email', class: 'col-sm-4 control-label' %>
+    <div class="col-sm-8">
+      <%= text_field_tag :email, @identity.try(:email), class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= label_tag :password %><br>
-    <%= password_field_tag :password %>
+  <div class="form-group">
+    <%= label_tag :password, 'Password', class: 'col-sm-4 control-label' %>
+    <div class="col-sm-8">
+      <%= password_field_tag :password, nil, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= label_tag :password_confirmation %><br>
-    <%= password_field_tag :password_confirmation %>
+  <div class="form-group">
+    <%= label_tag :password_confirmation, 'Confirm Password', class: 'col-sm-4 control-label' %>
+    <div class="col-sm-8">
+      <%= password_field_tag :password_confirmation, nil, class: 'form-control' %>
+    </div>
   </div>
-  <div class="actions"><%= submit_tag "Register" %></div>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+      <%= submit_tag "Register", class: "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>

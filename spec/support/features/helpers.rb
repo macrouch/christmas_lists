@@ -6,7 +6,7 @@ module Features
       fill_in 'Name', with: name
       fill_in 'Email', with: email
       fill_in 'Password', with: password
-      fill_in 'Password confirmation', with: password
+      fill_in 'Confirm Password', with: password
       click_button 'Register'
     end
 
@@ -21,7 +21,7 @@ module Features
       visit root_path
       click_link 'Change Password'
       fill_in 'Password', with: password
-      fill_in 'Password confirmation', with: confirmation
+      fill_in 'Confirm Password', with: confirmation
       click_button 'Update Password'
     end
 
