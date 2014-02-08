@@ -8,13 +8,13 @@
   <div class="container">
     <div class="row">
       <% @groups.each_with_index do |group, index| %>
-        <!-- keep 4 lists per row -->
-        <% if index > 0 && index % 4 == 0 %>
+        <!-- keep 3 lists per row -->
+        <% if index > 0 && index % 3 == 0 %>
           </div>
           <div class='row'>
         <% end %>
 
-        <div class="panel panel-default col-md-3">
+        <div class="panel panel-default col-md-4">
           <div class="panel-heading">
             <div class="panel-title"><%= group.name %></div>
           </div>
@@ -41,6 +41,10 @@
                 </ul>
               </div>
               <div id="<%= group.id %>-options" class="tab-pane fade options-tab">
+                <div class="input-group">
+                  <span id="<%= group.id %>-url" class="form-control"><%= join_group_url(group) %></span>
+                  <span class="input-group-addon clipboard-button" data-clipboard-target='<%= group.id %>-url' title="copy to clipboard"><i class="fa fa-files-o fa-fw"></i></span>
+                </div>
                 <p>
                   <%= link_to 'Leave Group', leave_group_path(group), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' unless group.user == current_user %>
                 </p>
