@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.groups.destroy(@group)
-        format.html { redirect_to groups_path, notice: 'Left group' }
+        format.html { redirect_to groups_path, notice: 'Left group successfully' }
       else
         format.html { redirect_to groups_path, alert: 'Could not leave group' }
       end

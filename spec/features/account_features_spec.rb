@@ -57,3 +57,32 @@ feature 'User changes password' do
     page.should have_content "Password confirmation doesn't match Password"
   end
 end
+
+feature "Friendly redirect" do
+  background do
+    sign_up_with 'testuser', 'test@example.com', 'password'
+    create_group_with('Test Group', 'What is 1+2?', '3')
+    sign_out
+  end
+
+  scenario "directs user back to join group page after registering" do
+    visit '/join_group/' + Group.first.id.to_s
+    page.should have_content 'You must be logged in'
+
+    sign_up_with 'testuser2', 'test2@example.com', 'password'
+
+    page.should have_content 'Joining Test Group'
+  end
+
+  scenario "directs user back to join group page after logging in" do
+    sign_up_with 'testuser2', 'test2@example.com', 'password'
+    sign_out
+
+    visit '/join_group/' + Group.first.id.to_s
+    page.should have_content 'You must be logged in'
+
+    sign_in_with 'test2@example.com', 'password'
+
+    page.should have_content 'Joining Test Group'
+  end
+end

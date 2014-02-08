@@ -6,8 +6,6 @@ feature 'User creates item' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
     create_group_with('Test Group', 'What is 1+2?', '3')
-    # visit collections_path
-    # click_link '2014'
     create_list_with 'Test List', 'testuser'
   end
 
@@ -55,8 +53,6 @@ feature 'User edits an item' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
     create_group_with('Test Group', 'What is 1+2?', '3')
-    # visit collections_path
-    # click_link '2014'
     create_list_with 'Test List', 'testuser'
     click_link 'Add Item'
     create_item_with 'Item 1', 'Test item for my list'
@@ -90,8 +86,6 @@ feature 'User marks item as purchased' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
     create_group_with('Test Group', 'What is 1+2?', '3')
-    # visit collections_path
-    # click_link '2014'
     create_list_with 'Test List', 'testuser'
     create_list_with 'Second List', ''
     within("##{name_to_id('Second List')}") do
@@ -124,8 +118,6 @@ feature 'User deletes an item' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
     create_group_with('Test Group', 'What is 1+2?', '3')
-    # visit collections_path
-    # click_link '2014'
     create_list_with 'Test List', 'testuser'
     click_link 'Add Item'
     create_item_with 'Item 1', 'Test item for my list'
@@ -142,8 +134,6 @@ feature 'User adds comment to an item' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
     create_group_with('Test Group', 'What is 1+2?', '3')
-    # visit collections_path
-    # click_link '2014'
     create_list_with 'Test List', ''
     within("##{name_to_id('Test List')}") do
       click_link 'Add Item'
