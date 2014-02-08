@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
       @collections = @groups.first.collections
 
-      redirect_to collection_path(@collections.last)
+      redirect_to collection_path(@collections.first)
     else
 
       respond_to do |format|

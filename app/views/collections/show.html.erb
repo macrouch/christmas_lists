@@ -1,14 +1,14 @@
-<h3><%= link_to @group.name, groups_path %> - <%= @collection.name %></h3>
-
-<%= link_to 'New List', new_collection_list_path(@collection) %>
+<div class="page-header">
+  <h3><%= @group.name %> - <%= @collection.name %></h3>
+</div>
 
 <div class='visible-xs visible-sm'>
-  <dl>
-    <dt>Table of Contents</dt>
+  <p>Table of Contents</p>
+  <div class="list-group">
     <% @lists.each do |list| %>
-      <dd><%= link_to list.name, "##{name_to_id(list.name)}" %></dd>
+      <%= link_to list.name, "##{name_to_id(list.name)}", class: 'list-group-item' %>
     <% end %>
-  </dl>
+  </div>
 </div>
 <div class='container'>
   <div class='row'>
@@ -22,7 +22,9 @@
       <div id='<%= name_to_id(list.name) %>' class='col-md-3 list'>
         <div>
           <div class='list-header'>
-            <h3 class='list-name'><%= list.name %></h3>
+            <div class="page-header">
+              <h3 class='list-name'><%= list.name %></h3>
+            </div>
             <p class='owner'>Owner: <%= list.user.name if list.user %></p>
             <p class='actions'><%= link_to 'Add Item', new_collection_list_item_path(@collection, list), class: 'btn btn-default' %> <%= link_to 'Edit List', edit_collection_list_path(@collection, list), class: 'btn btn-default' %></p>
           </div>

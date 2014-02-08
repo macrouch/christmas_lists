@@ -5,5 +5,5 @@ class Collection < ActiveRecord::Base
   validates :group_id, presence: true
   validates :name, presence: true
 
-  default_scope { order(:name) }
+  default_scope { order(:name => :desc) }
 end

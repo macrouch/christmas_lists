@@ -33,6 +33,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def leave_group
+    @user = current_user
+    @group = Group.where(id: params[:id]).first
+
+    if @group.user == @user
+      redirect_to groups_path, notice: "You can't leave #{@group.name}"
+      return
+    end
+
+    respond_to do |format|
+      if @user.groups.destroy(@group)
+        format.html { redirect_to groups_path, notice: 'Left group' }
+      else
+        format.html { redirect_to groups_path, alert: 'Could not leave group' }
+      end
+    end
+  end
+
   private
 
   def set_user

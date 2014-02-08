@@ -4,7 +4,9 @@ ChristmasLists::Application.routes.draw do
   get "/auth/failure" => "sessions#failure"
   get "/logout" => "sessions#destroy", as: :logout
   get "join_group/:id" => "groups#join", as: :join_group
+  get "group/:group_id/remove_group_member/:member_id" => "groups#remove_member", as: :remove_group_member
   post "join_group/:id" => "users#join_group"
+  get "leave_group/:id" => "users#leave_group", as: :leave_group
   
   resources :users, only: [:edit, :update]
   resources :identities
