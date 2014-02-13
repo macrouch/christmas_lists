@@ -63,9 +63,9 @@ module Features
     def create_item_in_another_list_with(name, description, hidden_from_owner=true, purchased=false, purchased_by=nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
-      hidden_from_owner ? check('Hide item from list owner') : uncheck('Hide item from list owner')
-      purchased ? check('Is the item purchased') : uncheck('Is the item purchased')
-      fill_in 'Who purchased the item', with: purchased_by
+      hidden_from_owner ? check('Hide from owner?') : uncheck('Hide from owner?')
+      purchased ? check('Purchased?') : uncheck('Purchased?')
+      fill_in 'Purchased by', with: purchased_by
       click_button 'Create Item'
     end
 
@@ -77,15 +77,15 @@ module Features
     end
 
     def purchase_item
-      check('Is the item purchased')
-      fill_in 'Who purchased the item', with: 'testuser'
+      check('Purchased?')
+      fill_in 'Purchased by', with: 'testuser'
       click_button 'Update Item'
     end
 
     def create_item_comment(comment, hidden)
       click_link 'Add New Comment'
       fill_in 'Comment', with: comment
-      hidden ? check('Keep comment private to you?') : uncheck('Keep comment private to you?')
+      hidden ? check('Private?') : uncheck('Private?')
       click_button 'Add Comment'
     end
 

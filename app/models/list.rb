@@ -6,4 +6,8 @@ class List < ActiveRecord::Base
   validates :name, presence: true
   validates :collection_id, presence: true
 
+  def username
+    self.user.name if self.user
+    nil
+  end
 end

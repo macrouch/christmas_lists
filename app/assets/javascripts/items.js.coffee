@@ -4,3 +4,5 @@
 
 $(document).ready ->
   $("#item_name").focus()
+
+  $(".fa-question-circle").tooltip()

@@ -22,21 +22,30 @@
       <% end %>
 
       <div class='form-group'>
-        <%= f.label :name, class: 'col-sm-4 control-label' %>
+        <%= f.label :name, class: 'col-sm-4 control-label' do %>
+          Name
+          <i class="fa fa-question-circle" data-toggle="tooltip" title="Give this item a name"></i>
+        <% end %>
         <div class='col-sm-8'>
           <%= f.text_field :name, class: 'form-control' %>
         </div>
       </div>
 
       <div class='form-group'>
-        <%= f.label :description, class: 'col-sm-4 control-label' %>
+        <%= f.label :description, class: 'col-sm-4 control-label' do %>
+          Description
+          <i class="fa fa-question-circle" data-toggle="tooltip" title="Enter a description of the item (optional)"></i>
+        <% end %>
         <div class='col-sm-8'>
           <%= f.text_area :description, class: 'form-control' %>
         </div>
       </div>
 
       <div class='form-group'>
-        <label class='col-sm-4 control-label'>Current Image</label>
+        <label class='col-sm-4 control-label'>
+          Image
+          <i class="fa fa-question-circle" data-toggle="tooltip" title="Current image for this item"></i>
+        </label>
         <div class='col-sm-8'>
           <%= image_tag @item.image.url(:medium) %>
         </div>
@@ -46,29 +55,43 @@
       </div>
 
       <div class='form-group'>
-        <%= f.label :image, 'New Image Url', class: 'col-sm-4 control-label' %>
+        <%= f.label :image, class: 'col-sm-4 control-label' do %>
+          New Image Url
+          <i class="fa fa-question-circle" data-toggle="tooltip" title="Enter an address for a new image (optional)"></i>
+        <% end %>
         <div class='col-sm-8'>
         <%= f.text_field :image, value: nil, class: 'form-control' %>
         </div>
       </div>
 
       <% unless current_user == @list.user %>
+        <hr>
+        <legend>The following items are not visible to <%= @list.username %></legend>
         <div class='form-group'>
-          <%= f.label :hidden_from_owner, 'Hide item from list owner', class: 'col-sm-4 control-label' %>
+          <%= f.label :hidden_from_owner, class: 'col-sm-4 control-label' do %>
+            Hide from owner?
+            <i class="fa fa-question-circle" data-toggle="tooltip" title="Hide this item from list owner (optional)"></i>
+          <% end %>
           <div class='col-sm-8'>
             <%= f.check_box :hidden_from_owner, class: 'form-control' %>
           </div>
         </div>
 
         <div class='form-group'>
-          <%= f.label :purchased, 'Is the item purchased', class: 'col-sm-4 control-label' %>
+          <%= f.label :purchased, class: 'col-sm-4 control-label' do %>
+            Purchased?
+            <i class="fa fa-question-circle" data-toggle="tooltip" title="Has this item been purchased? (optional)"></i>
+          <% end %>
           <div class='col-sm-8'>
             <%= f.check_box :purchased, class: 'form-control' %>
           </div>
         </div>
 
         <div class='form-group'>
-          <%= f.label :purchased_by, 'Who purchased the item', class: 'col-sm-4 control-label' %>
+          <%= f.label :purchased_by, class: 'col-sm-4 control-label' do %>
+            Purchased by
+            <i class="fa fa-question-circle" data-toggle="tooltip" title="Who purchased the item? (optional)"></i>
+          <% end %>
           <div class='col-sm-8'>
             <%= f.text_field :purchased_by, class: 'form-control' %>
           </div>
@@ -125,15 +148,21 @@
           <div class="modal-body">
 
             <div class='form-group'>
-              <%= f.label :comment, class: 'col-sm-2 control-label' %>
-              <div class='col-sm-10'>
+              <%= f.label :comment, class: 'col-sm-3 control-label' do %>
+                Comment
+                <i class="fa fa-question-circle" data-toggle="tooltip" title="Enter a comment for the item"></i>
+              <% end %>
+              <div class='col-sm-9'>
                 <%= f.text_area :comment, class: 'form-control' %>
               </div>
             </div>
 
             <div class='form-group'>
-              <%= f.label :private, 'Keep comment private to you?', class: 'col-sm-2 control-label' %>
-              <div class='col-sm-10'>
+              <%= f.label :private, class: 'col-sm-3 control-label' do %>
+                Private?
+                <i class="fa fa-question-circle" data-toggle="tooltip" title="Keep this comment private to you?"></i>
+              <% end %>
+              <div class='col-sm-9'>
                 <%= f.check_box :private, class: 'form-control' %>
               </div>
             </div>
