@@ -7,7 +7,10 @@ class List < ActiveRecord::Base
   validates :collection_id, presence: true
 
   def username
-    self.user.name if self.user
-    nil
+    if self.user
+      self.user.name
+    else
+      nil
+    end
   end
 end

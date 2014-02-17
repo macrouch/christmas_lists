@@ -69,6 +69,7 @@ gem "capistrano-db-tasks", group: :development, require: false
 # gem 'debugger', group: [:development, :test]
 
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 gem 'omniauth-identity'
 gem 'figaro'
 

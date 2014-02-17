@@ -1,6 +1,7 @@
 ChristmasLists::Application.routes.draw do
 
   post "/auth/:provider/callback" => "sessions#create"
+  get "/auth/:provider/callback" => "sessions#create"
   get "/auth/failure" => "sessions#failure"
   get "/logout" => "sessions#destroy", as: :logout
   get "join_group/:id" => "groups#join", as: :join_group

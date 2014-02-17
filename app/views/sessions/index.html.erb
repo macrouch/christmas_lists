@@ -1,6 +1,7 @@
-<p>
-  <%= link_to "Create an account", new_identity_path %> or login below.
-</p>
+<div class="login-header">
+  <%= link_to "", '/auth/google_oauth2', class: 'btn google-login-button' %><%= link_to "", '/auth/facebook', class: 'btn facebook-login-button' %>
+  <p>Don't user these services? <%= link_to "Create an account here", new_identity_path %> or login below.</p>
+</div>
 
 <%= form_tag "/auth/identity/callback", class: 'form-horizontal', role: 'form' do %>
   <div class="form-group">
