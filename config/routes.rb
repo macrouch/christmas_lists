@@ -1,6 +1,7 @@
 ChristmasLists::Application.routes.draw do
 
   post "/auth/:provider/callback" => "sessions#create"
+  get "activate/:token" => "users#activate", as: :user_activation
   get "/auth/:provider/callback" => "sessions#create"
   get "/auth/failure" => "sessions#failure"
   get "/logout" => "sessions#destroy", as: :logout

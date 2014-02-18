@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.from_omniauth(env['omniauth.auth'])
+    user = User.from_omniauth(env['omniauth.auth'], session[:return_to])
     session[:user_id] = user.id
     flash[:notice] = 'Signed in'
     redirect_back_or root_url

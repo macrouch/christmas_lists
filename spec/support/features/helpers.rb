@@ -8,6 +8,7 @@ module Features
       fill_in 'Password', with: password
       fill_in 'Confirm Password', with: password
       click_button 'Register'
+      visit user_activation_path(User.last.email_token) if User.last
     end
 
     def sign_in_with (email, password)

@@ -37,6 +37,9 @@ class GroupsController < ApplicationController
     @user = current_user
     @group = Group.where(id: params[:id]).first
 
+    if !@user.active && @user.original_url
+      redirect_to root_url, alert: "You must activate your account before you can join groups"
+    end
     if @user.groups.include?(@group)
       redirect_to groups_path, notice: "You are already a member of #{@group.name}"
     end

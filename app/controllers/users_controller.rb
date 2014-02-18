@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: [:join_group]
+  before_action :set_user, except: [:join_group, :activate]
 
   def edit    
   end
@@ -48,6 +48,18 @@ class UsersController < ApplicationController
       else
         format.html { redirect_to groups_path, alert: 'Could not leave group' }
       end
+    end
+  end
+
+  def activate
+    user = User.where(email_token: params[:token]).first
+    user.active = true
+    user.save
+
+    if user.original_url
+      redirect_to url_for(user.original_url), notice: "Account activated"
+    else
+      redirect_to root_url, notice: "Account activated"
     end
   end
 

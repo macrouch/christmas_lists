@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Christmas Lists, <%= @user.name %></h1>
+    <p>
+      You have successfully signed up to Christmas Lists. You can sign in using this email address and the password you entered during registration.<br/>
+    </p>
+    <p>
+      First you need to activate your account. To activate your account, just follow this link: <%= link_to "Activate account", user_activation_url(@user.email_token) %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
