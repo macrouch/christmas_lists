@@ -55,6 +55,7 @@ class UsersController < ApplicationController
     user = User.where(email_token: params[:token]).first
     user.active = true
     user.save
+    session[:user_id] = user.id
 
     if user.original_url
       redirect_to url_for(user.original_url), notice: "Account activated"
