@@ -9,12 +9,10 @@ ChristmasLists::Application.routes.draw do
   get "group/:group_id/remove_group_member/:member_id" => "groups#remove_member", as: :remove_group_member
   post "join_group/:id" => "users#join_group"
   get "leave_group/:id" => "users#leave_group", as: :leave_group
+  post "group_invite" => "groups#invite", as: :group_invite
   
   resources :users, only: [:edit, :update]
   resources :identities
-  # resources :lists do
-  #   resources :items, only: [:new, :edit, :update, :create, :destroy]
-  # end
   resources :item_comments, only: [:create]
   resources :groups
   resources :collections do

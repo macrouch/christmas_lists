@@ -46,6 +46,9 @@
                   </ul>
                 </div>
                 <div id="<%= group.id %>-options" class="tab-pane fade options-tab">
+                  <div class="invite-button">
+                    <a href="#" class='btn btn-default group-invite-link' data-id="<%= group.id %>" data-toggle='modal' data-target='#invite-modal'>Invite by Email</a> or send the link below
+                  </div>
                   <div class="input-group group-join-link" data-toggle="tooltip" title="Share this link to invite people to this group">
                     <input id="<%= group.id %>-url" class="form-control" value="<%= join_group_url(group) %>" readonly />
                     <span class="input-group-addon clipboard-button" data-clipboard-target='<%= group.id %>-url' title="copy to clipboard"><i class="fa fa-files-o fa-fw"></i></span>
@@ -63,3 +66,33 @@
     </div>
   <% end %>
 <% end %>
+
+<div class="modal fade" id="invite-modal" tabindex="-1" role="dialog" aria-labelledby="invite-modal-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="invite-modal-title">Group Invite</h4>
+      </div>
+      <%= form_tag group_invite_path, class: 'form-horizontal' do %>
+        <%= hidden_field_tag :group_id %>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="emails">
+              Email Addresses
+              <i class="fa fa-question-circle" data-toggle="tooltip" title="Enter one email address per line"></i>
+            </label>
+            <div class="col-sm-8">
+              <%= text_area_tag("group[emails]", nil, size: "20x6", class: 'form-control') %>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= submit_tag 'Send email', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

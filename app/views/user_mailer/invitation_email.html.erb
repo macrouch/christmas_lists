@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @user.name %> has invited you to a Christmas Lists group!</h1>
+    <p>
+      To join, simply follow this link: <%= link_to "Join Christmas List Group", join_group_url(@group) %>. Answer the group's question, and start your wish list!
+    </p>
+  </body>
+</html>

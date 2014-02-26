@@ -6,3 +6,7 @@ $(document).ready ->
   clip = new ZeroClipboard($(".clipboard-button"))
 
   $(".group-join-link").tooltip()
+
+  $(document).on 'click', '.group-invite-link', ->
+    groupId = $(this).data('id')
+    $("#invite-modal #group_id").val(groupId)

@@ -67,6 +67,17 @@ class GroupsController < ApplicationController
     end
   end
 
+  def invite
+    user = current_user
+    @group = Group.where(id: params[:group_id]).first
+    emails = params[:group][:emails].split("\r\n")
+
+    respond_to do |format|
+      UserMailer.invitation_email(user, @group, emails).deliver
+      format.html { redirect_to groups_path, notice: "Invitation email sent" }
+    end
+  end
+
   private
 
   def group_params
