@@ -26,12 +26,12 @@
         <ul class='nav navbar-nav'>
           <li class="divider"></li>
           <li>
-             <%= link_to 'Groups', groups_path %>
+             <%= link_to 'View My Groups', groups_path %>
           </li>
           <li class="divider"></li>
           <li>
-            <%= link_to 'New List', new_collection_list_path(@collection) if params[:controller] == "collections" and params[:action] == "show" %>
-            <%= link_to 'New Group', new_group_path if params[:controller] == "groups" and params[:action] == "index" %>
+            <%= link_to 'Create New List', new_collection_list_path(@collection) if params[:controller] == "collections" and params[:action] == "show" %>
+            <%= link_to 'Create New Group', new_group_path if params[:controller] == "groups" and params[:action] == "index" %>
           </li>
         </ul>
         <ul class='nav navbar-nav navbar-right'>
