@@ -32,11 +32,13 @@
 
               <div class="tab-content">
                 <div id="<%= group.id %>-lists" class="tab-pane fade in active">
-                  <div class="list-group">
+                  <ul class="list-group">
                     <% group.collections.each do |collection| %>
-                      <%= link_to collection.name, collection, class: 'list-group-item' %>
+                        <%= link_to collection, class: 'list-group-item'  do %>
+                          <%= collection.name%><span class="badge">View</span>
+                        <% end %>
                     <% end %>
-                  </div>
+                  </ul>
                 </div>
                 <div id="<%= group.id %>-members" class="tab-pane fade">
                   <ul class="list-group">
