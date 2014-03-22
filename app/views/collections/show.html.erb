@@ -1,16 +1,14 @@
-<div class="page-header">
-  <h3><%= @group.name %> - <%= @collection.name %></h3>
-</div>
-
-<div class='visible-xs visible-sm'>
-  <p>Table of Contents</p>
-  <div class="list-group">
-    <% @lists.each do |list| %>
-      <%= link_to list.name, "##{name_to_id(list.name)}", class: 'list-group-item' %>
-    <% end %>
+<div class="container">
+  <div class="page-header">
+    <h3><%= @group.name %> - <%= @collection.name %></h3>
   </div>
-</div>
-<div class='container'>
+
+  <div class="row">
+    <div class="col-md-12 visible-xs visible-sm">
+      <h4>Jump to list: <%= select_tag(:list_navigation, options_for_select(@list_dropdown)) %></h4>
+    </div>
+  </div>
+
   <div class='row'>
     <% @lists.each_with_index do |list, index| %>
       <!-- keep 4 lists per row -->
@@ -34,7 +32,7 @@
               <% end %>
             </dl>
             <div class='visible-xs visible-sm back-to-top'>
-            <%= link_to ' Back to top', '#', class: 'fa fa-arrow-up' %>
+            <%= link_to ' Back to top', '#', class: 'fa fa-arrow-up top-link' %>
             </div>
           </div>
       </div>

@@ -1,16 +1,16 @@
-<% unless current_user.active %>
-  <div class="page-header">
-    <h3>You need to activate your account first</h3>
-  </div>
-<% else %>
-  <div class="page-header">
-    <h3><%= current_user.name %>'s Groups</h3>
-  </div>
-
-  <% if @groups.empty? %>
-    <p>You don't have any groups, <%= link_to "create one", new_group_path %> and get started!</p>
+<div class="container">
+  <% unless current_user.active %>
+    <div class="page-header">
+      <h3>You need to activate your account first</h3>
+    </div>
   <% else %>
-    <div class="container">
+    <div class="page-header">
+      <h3><%= current_user.name %>'s Groups</h3>
+    </div>
+
+    <% if @groups.empty? %>
+      <p>You don't have any groups, <%= link_to "create one", new_group_path %> and get started!</p>
+    <% else %>
       <div class="row">
         <% @groups.each_with_index do |group, index| %>
           <!-- keep 3 lists per row -->
