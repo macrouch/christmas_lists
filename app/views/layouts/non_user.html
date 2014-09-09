@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
+  <%= render "layouts/google_analytics" if Rails.env.production? %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -17,7 +18,7 @@
   </div>
 
   <div class='container'>
-    <%= render partial: "shared/flash_messages", flash: flash %> 
+    <%= render partial: "shared/flash_messages", flash: flash %>
     <div class='row'>
       <div class="col-md-7 about">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non lectus sed sapien fermentum convallis in vitae sem. Aliquam erat volutpat. Aliquam commodo imperdiet pretium. Phasellus quis ornare tortor. Suspendisse potenti. Duis eget porttitor dui. Proin ipsum libero, sodales vel aliquam eget, fermentum rutrum mauris. Nam at tincidunt felis.</p>
