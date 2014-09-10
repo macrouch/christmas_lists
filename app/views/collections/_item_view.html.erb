@@ -1,6 +1,6 @@
 <% unless current_user == list.user && item.hidden_from_owner %>
   <dt><%= item_link(collection, list, item) %></dt>
-  <dd>
+  <dd class="item-description">
       <small><%= auto_link(item.description, :all, target: '_blank') %></small>
   </dd>
 <% end %>

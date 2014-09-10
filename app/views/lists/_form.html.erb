@@ -1,13 +1,13 @@
 <div class="col-md-5">
   <%= form_for([@collection, @list], html: {class: 'form-horizontal'}) do |f| %>
     <fieldset>
-      <legend>
-        <% if params[:action] == 'new' %>
+      <div class="page-header">
+        <h3><% if params[:action] == 'new' %>
           New List
         <% else %>
           Editing <%= @list.name %>
-        <% end %>
-      </legend>
+        <% end %></h3>
+      </div>
 
       <% if @list.errors.any? %>
         <div id="error_explanation">

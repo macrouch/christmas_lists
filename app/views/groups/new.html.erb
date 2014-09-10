@@ -1,9 +1,9 @@
 <div class="col-md-5">
   <%= form_for @group, html: { class: 'form-horizontal' } do |f| %>
     <fieldset>
-      <legend>
-        New Group
-      </legend>
+      <div class="page-header">
+        <h3>New Group</h3>
+      </div>
 
       <% if @group.errors.any? %>
         <div class='error_explanation'>

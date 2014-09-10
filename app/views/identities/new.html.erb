@@ -1,6 +1,6 @@
 <%= form_tag "/auth/identity/register", class: 'form-horizontal' do %>
   <fieldset>
-    <legend>New Account</legend>
+    <div class="page-header"><h3>New Account</h3></div>
   </fieldset>
   <% if @identity && @identity.errors.any? %>
     <div class="error_messages">

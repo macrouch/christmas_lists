@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class='navbar navbar-inverse navbar-static-top'>
+  <div class='navbar navbar-default navbar-static-top'>
     <div class='container'>
       <div class='navbar-header'>
         <%= link_to 'Christmas Lists', root_url, class: 'navbar-brand' %>
@@ -21,8 +21,10 @@
     <%= render partial: "shared/flash_messages", flash: flash %>
     <div class='row'>
       <div class="col-md-7 about">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non lectus sed sapien fermentum convallis in vitae sem. Aliquam erat volutpat. Aliquam commodo imperdiet pretium. Phasellus quis ornare tortor. Suspendisse potenti. Duis eget porttitor dui. Proin ipsum libero, sodales vel aliquam eget, fermentum rutrum mauris. Nam at tincidunt felis.</p>
-        <p>Donec semper est sit amet tortor tincidunt, et scelerisque metus pharetra. Nulla facilisi. Praesent magna est, faucibus sed massa sed, vehicula semper felis. Donec tincidunt pulvinar mi ac consequat. Quisque consequat accumsan ligula, nec consequat tortor venenatis in. Aliquam hendrerit, neque suscipit tincidunt faucibus, purus nisl feugiat tellus, non porttitor sem magna id neque. Pellentesque semper quis eros eu auctor. Sed elementum tellus erat, in pretium felis fermentum a. In tincidunt consectetur lorem, eget accumsan nulla dapibus at. Nunc non eleifend neque. Donec a elementum diam. Mauris viverra sollicitudin convallis. Sed eu lacus eget mi euismod pellentesque vitae ut elit.</p>
+        <p>Christmas Lists is a place to organize your group's Christmas wish lists. You can create a list, add items, and view other group members' lists. Each item can have a description, and an image, so you know that the other member's know exactly what the item is.</p>
+        <p>When viewing another group member's list, there are a few things you can do without the owner of that list knowing. You can leave comments for other members to see, or you can mark the item as purchased so that other members know not to purchase it. You can also add items in other member's list without them knowing, in case you found the perfect item for someone and they didn't already have it on their list.</p>
+        <p>Someone in your group doesn't have internet access? Not a problem, you can create a list for them. Just create a new list, give it a name, but don't select an owner. This is especially useful if your group is a family and you have young children making wish lists.</p>
+        <p>You can login on this page with Google and Facebook integration to make things easy. From there you can either start a new group, or join an existing group (the person who started the group can give you a link).</p>
       </div>
       <div class="col-md-5">
         <%= yield %>

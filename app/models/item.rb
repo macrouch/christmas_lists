@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
 
   validates :name, presence: true
   validates :list, presence: true
-  # validates :visible_to_owner, presence: true
+  # validates :hidden_from_owner, presence: true
 
   has_attached_file :image,
     styles: { medium: "300x300>", thumb: "100x100>" },

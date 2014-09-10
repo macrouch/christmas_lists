@@ -1,13 +1,13 @@
 <div class="col-md-10">
   <%= form_for([@collection, @list, @item], html: {class: 'form-horizontal'}) do |f| %>
     <fieldset>
-      <legend>
-        <% if params[:action] == 'new' %>
-          New Item For <%= @list.name %>
+      <div class="page-header">
+        <h3><% if params[:action] == 'new' %>
+          New Item for <%= @list.name %>
         <% else %>
           Editing <%= @item.name %>
-        <% end %>
-      </legend>
+        <% end %></h3>
+      </div>
 
       <% if @item.errors.any? %>
         <div class='error_explanation'>
@@ -66,7 +66,7 @@
 
       <% unless current_user == @list.user %>
         <hr>
-        <legend>The following items are not visible to <%= @list.username || "list owner" %></legend>
+        <h3>The following items are not visible to <%= @list.username || "list owner" %></h3>
         <div class='form-group'>
           <%= f.label :hidden_from_owner, class: 'col-sm-4 control-label' do %>
             Hide from owner?
