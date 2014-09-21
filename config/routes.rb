@@ -10,7 +10,7 @@ ChristmasLists::Application.routes.draw do
   post "join_group/:id" => "users#join_group"
   get "leave_group/:id" => "users#leave_group", as: :leave_group
   post "group_invite" => "groups#invite", as: :group_invite
-  
+
   resources :users, only: [:edit, :update]
   resources :identities
   resources :item_comments, only: [:create]
@@ -20,6 +20,7 @@ ChristmasLists::Application.routes.draw do
       resources :items, only: [:new, :edit, :update, :create, :destroy]
     end
   end
+  resources :password_resets
 
   root 'sessions#index'
   # The priority is based upon order of creation: first created -> highest priority.

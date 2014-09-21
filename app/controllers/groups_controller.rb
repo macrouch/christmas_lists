@@ -48,7 +48,7 @@ class GroupsController < ApplicationController
   def remove_member
     @user = current_user
     @group = Group.find(params[:group_id])
-    @member = @group.members.where(id: params[:member_id]).first
+    @member = User.find(params[:member_id])
 
     respond_to do |format|
       if @group.user == @user

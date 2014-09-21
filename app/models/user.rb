@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :provider, presence: true
   validates :email, presence: true, uniqueness: true
 
-  # obfuscate_id spin: 891561354
+  obfuscate_id spin: 891561354
 
   def self.from_omniauth(auth, return_to=nil)
     where(email: auth['info']['email']).first || create_with_omniauth(auth, return_to)
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
       user.email = auth['info']['email']
       if auth['provider'] == "identity"
         user.original_url = return_to
-        user.generate_token
+        user.generate_token(:email_token)
       else
         user.active = true
       end
@@ -34,10 +34,17 @@ class User < ActiveRecord::Base
     user
   end
 
-  def generate_token
-    self.email_token = loop do
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
+  def generate_token(column)
+    self[column] = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)
-      break random_token unless self.class.exists?(email_token: random_token)
+      break random_token unless self.class.exists?(column => random_token)
     end
   end
 end

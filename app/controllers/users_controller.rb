@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if success
-        format.html { redirect_to lists_url, notice: 'Password successfully changed' }
+        format.html { redirect_to root_url, notice: 'Password successfully changed' }
       else
         format.html { render action: 'edit' }
       end

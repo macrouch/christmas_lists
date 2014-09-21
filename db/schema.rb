@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218003147) do
+ActiveRecord::Schema.define(version: 20140921170221) do
 
   create_table "collections", force: true do |t|
     t.integer  "group_id"
@@ -83,9 +83,11 @@ ActiveRecord::Schema.define(version: 20140218003147) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-    t.boolean  "active",       default: false
+    t.boolean  "active",                 default: false
     t.string   "email_token"
     t.string   "original_url"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

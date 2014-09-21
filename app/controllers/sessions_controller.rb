@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_filter :is_logged_in
+  layout "non_user"
 
   def index
     if current_user
@@ -12,18 +13,10 @@ class SessionsController < ApplicationController
       @collections = @groups.first.collections
 
       redirect_to collection_path(@collections.first)
-    else
-
-      respond_to do |format|
-        format.html { render :layout => "non_user" }
-      end
     end
   end
 
   def new
-    respond_to do |format|
-      format.html { render :layout => "non_user" }
-    end
   end
 
   def create
