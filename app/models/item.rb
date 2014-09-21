@@ -6,6 +6,8 @@ class Item < ActiveRecord::Base
   validates :list, presence: true
   # validates :hidden_from_owner, presence: true
 
+  obfuscate_id spin: 546518432
+
   has_attached_file :image,
     styles: { medium: "300x300>", thumb: "100x100>" },
     :default_url => '/images/no_image.png'

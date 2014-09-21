@@ -105,7 +105,7 @@
                 <% if !comment.private || (comment.private && comment.user == current_user) %>
                   <div class="panel panel-default">
                     <div class="panel-heading">
-                      <%= comment.user.name %><%= " (Private)" if comment.private %>
+                      <%= comment.user.name %><%= " (Private)" if comment.private %><%= " -- #{time_ago_in_words(comment.created_at)} ago" %>
                     </div>
                     <div class="panel-body">
                       <%= comment.comment %>
@@ -147,8 +147,8 @@
         </div>
         <%= form_for(@item_comment, html: {class: 'form-horizontal'}) do |f| %>
           <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.hidden_field :item_id, value: @item.id %>
-          <%= hidden_field_tag :collection_id, @collection.id %>
+          <%= f.hidden_field :item_id, value: @item.to_param %>
+          <%= hidden_field_tag :collection_id, @collection.to_param %>
           <div class="modal-body">
 
             <div class='form-group'>

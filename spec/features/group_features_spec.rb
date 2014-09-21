@@ -28,7 +28,7 @@ feature 'User joins a group' do
   end
 
   scenario "with correct answer" do
-    visit '/join_group/' + Group.first.id.to_s
+    visit '/join_group/' + Group.first.to_param.to_s
     page.should have_content 'Joining Test Group'
 
     fill_in 'Answer', with: '3'
@@ -38,7 +38,7 @@ feature 'User joins a group' do
   end
 
   scenario "with incorrect answer" do
-    visit '/join_group/' + Group.first.id.to_s
+    visit '/join_group/' + Group.first.to_param.to_s
     page.should have_content 'Joining Test Group'
 
     fill_in 'Answer', with: 'chicken'
@@ -49,13 +49,13 @@ feature 'User joins a group' do
   end
 
   scenario "cant join a group you are already a member of" do
-    visit '/join_group/' + Group.first.id.to_s
+    visit '/join_group/' + Group.first.to_param.to_s
     page.should have_content 'Joining Test Group'
 
     fill_in 'Answer', with: '3'
     click_button 'Join'
 
-    visit '/join_group/' + Group.first.id.to_s
+    visit '/join_group/' + Group.first.to_param.to_s
     page.should have_content 'You are already a member of Test Group'
   end
 end
@@ -69,7 +69,7 @@ feature 'User leaves a group' do
   scenario 'leaves group successfully' do
     sign_out
     sign_up_with 'testuser2', 'test2@example.com', 'password'
-    visit '/join_group/' + Group.first.id.to_s
+    visit '/join_group/' + Group.first.to_param.to_s
     page.should have_content 'Joining Test Group'
     fill_in 'Answer', with: '3'
     click_button 'Join'
@@ -105,7 +105,7 @@ feature "User removes a group member" do
   scenario "cannot remove members from group I didn't start" do
     sign_out
     sign_up_with 'testuser2', 'test2@example.com', 'password'
-    visit '/join_group/' + Group.first.id.to_s
+    visit '/join_group/' + Group.first.to_param.to_s
     page.should have_content 'Joining Test Group'
     fill_in 'Answer', with: '3'
     click_button 'Join'
@@ -119,7 +119,7 @@ feature "User removes a group member" do
   scenario "successfully removes group member" do
     sign_out
     sign_up_with 'testuser2', 'test2@example.com', 'password'
-    visit '/join_group/' + Group.first.id.to_s
+    visit '/join_group/' + Group.first.to_param.to_s
     page.should have_content 'Joining Test Group'
     fill_in 'Answer', with: '3'
     click_button 'Join'

@@ -8,4 +8,6 @@ class Group < ActiveRecord::Base
   validates :question, presence: true
   validates :answer, presence: true
   validates :user_id, presence: true
+
+  obfuscate_id spin: 48151248
 end

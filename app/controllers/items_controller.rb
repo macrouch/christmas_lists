@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
   end
 
   def set_list
-    @collection = Collection.where(id: params[:collection_id]).first
+    @collection = Collection.find(params[:collection_id])
     @list = List.find(params[:list_id])
     @item_comment = ItemComment.new
   end

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: [:join_group, :activate]
+  before_action :set_user, except: [:join_group, :activate, :leave_group]
 
-  def edit    
+  def edit
   end
 
   def update
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def join_group
     @user = current_user
-    @group = Group.where(id: params[:id]).first
+    @group = Group.find(params[:id])
     answer = params[:answer]
 
     respond_to do |format|
@@ -28,14 +28,14 @@ class UsersController < ApplicationController
         @user.groups << @group
         format.html { redirect_to groups_path, notice: 'Group joined' }
       else
-        format.html { redirect_to join_group_path(@group.id), alert: 'Incorrect answer, try again' }
+        format.html { redirect_to join_group_path(@group), alert: 'Incorrect answer, try again' }
       end
     end
   end
 
   def leave_group
     @user = current_user
-    @group = Group.where(id: params[:id]).first
+    @group = Group.find(params[:id])
 
     if @group.user == @user
       redirect_to groups_path, notice: "You can't leave #{@group.name}"

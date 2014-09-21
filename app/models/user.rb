@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   validates :provider, presence: true
   validates :email, presence: true, uniqueness: true
 
+  # obfuscate_id spin: 891561354
+
   def self.from_omniauth(auth, return_to=nil)
     where(email: auth['info']['email']).first || create_with_omniauth(auth, return_to)
   end

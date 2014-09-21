@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
 
   def join
     @user = current_user
-    @group = Group.where(id: params[:id]).first
+    @group = Group.find(params[:id])
 
     if !@user.active && @user.original_url
       redirect_to root_url, alert: "You must activate your account before you can join groups"
@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
 
   def remove_member
     @user = current_user
-    @group = Group.where(id: params[:group_id]).first
+    @group = Group.find(params[:group_id])
     @member = @group.members.where(id: params[:member_id]).first
 
     respond_to do |format|
@@ -69,7 +69,7 @@ class GroupsController < ApplicationController
 
   def invite
     user = current_user
-    @group = Group.where(id: params[:group_id]).first
+    @group = Group.find(params[:group_id])
     emails = params[:group][:emails].split("\r\n")
 
     respond_to do |format|

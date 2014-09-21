@@ -10,9 +10,9 @@ module SessionsHelper
 
   def is_user_member
     if params[:controller] == 'collections'
-      @collection = Collection.where(id: params[:id]).first
+      @collection = Collection.find(params[:id])
     else
-      @collection = Collection.where(id: params[:collection_id]).first
+      @collection = Collection.find(params[:collection_id])
     end
     @group = @collection.group
 

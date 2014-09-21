@@ -4,8 +4,9 @@ class ItemCommentsController < ApplicationController
   before_action :is_user_member
 
   def create
+    item = Item.find(params[:item_comment][:item_id])
     @item_comment = ItemComment.new(item_comment_params)
-    item = @item_comment.item
+    @item_comment.item = item
     list = @item_comment.list
     collection = list.collection
 

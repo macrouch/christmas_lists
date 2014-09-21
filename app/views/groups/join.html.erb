@@ -1,5 +1,5 @@
 <div class="col-md-5">
-  <%= form_tag("/join_group/#{@group.id}", method: "post", class: 'form-horizontal') do %>
+  <%= form_tag("/join_group/#{@group.to_param}", method: "post", class: 'form-horizontal') do %>
     <fieldset>
       <div class="page-header"><h3>Joining <%= @group.name %></h3></div>
 

@@ -6,4 +6,6 @@ class Collection < ActiveRecord::Base
   validates :name, presence: true
 
   default_scope { order(:name => :desc) }
+
+  obfuscate_id spin: 658165144
 end

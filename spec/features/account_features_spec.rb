@@ -6,13 +6,13 @@ feature 'Visitor signs up' do
     page.should have_content 'Account activated'
     page.should have_content 'Logout testuser'
   end
-  
+
   scenario 'with invalid email' do
     sign_up_with 'testuser', 'test', 'password'
     page.should have_content 'Email is invalid'
     page.should have_content 'New Account'
   end
-  
+
   scenario 'with blank password' do
     sign_up_with 'testuser', 'test@example.com', ''
     page.should have_content "Password can't be blank"
@@ -23,7 +23,7 @@ end
 feature 'User signs in' do
   background do
     sign_up_with 'testuser', 'test@example.com', 'password'
-    sign_out    
+    sign_out
   end
 
   scenario 'with valid email and password' do
@@ -31,7 +31,7 @@ feature 'User signs in' do
     page.should have_content 'Signed in'
     page.should have_content 'Logout testuser'
   end
-  
+
   scenario 'with invalid password' do
     sign_in_with 'test@example.com', 'passwrd'
     page.should have_content 'Authentication failed, please try again'
@@ -66,7 +66,7 @@ feature "Friendly redirect" do
   end
 
   scenario "directs user back to join group page after registering" do
-    visit '/join_group/' + Group.first.id.to_s
+    visit '/join_group/' + Group.first.to_param.to_s
     page.should have_content 'You must be logged in'
 
     sign_up_with 'testuser2', 'test2@example.com', 'password'
@@ -78,7 +78,7 @@ feature "Friendly redirect" do
     sign_up_with 'testuser2', 'test2@example.com', 'password'
     sign_out
 
-    visit '/join_group/' + Group.first.id.to_s
+    visit '/join_group/' + Group.first.to_param.to_s
     page.should have_content 'You must be logged in'
 
     sign_in_with 'test2@example.com', 'password'

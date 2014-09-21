@@ -25,13 +25,13 @@
             </div>
             <div class="panel-body">
               <ul class="nav nav-tabs">
-                <li class="active"><a href="#<%= group.id %>-lists" data-toggle="tab">Lists</a></li>
-                <li><a href="#<%= group.id %>-members" data-toggle="tab">Members</a></li>
-                <li class="options-link"><a href="#<%= group.id %>-options" data-toggle="tab">Options</a></li>
+                <li class="active"><a href="#<%= group.to_param %>-lists" data-toggle="tab">Lists</a></li>
+                <li><a href="#<%= group.to_param %>-members" data-toggle="tab">Members</a></li>
+                <li class="options-link"><a href="#<%= group.to_param %>-options" data-toggle="tab">Options</a></li>
               </ul>
 
               <div class="tab-content">
-                <div id="<%= group.id %>-lists" class="tab-pane fade in active">
+                <div id="<%= group.to_param %>-lists" class="tab-pane fade in active">
                   <ul class="list-group">
                     <% group.collections.each do |collection| %>
                         <%= link_to collection, class: 'list-group-item'  do %>
@@ -40,20 +40,20 @@
                     <% end %>
                   </ul>
                 </div>
-                <div id="<%= group.id %>-members" class="tab-pane fade">
+                <div id="<%= group.to_param %>-members" class="tab-pane fade">
                   <ul class="list-group">
                     <% group.members.each do |member| %>
                       <li class="list-group-item"><%= member.name %> <%= link_to 'Remove', remove_group_member_path(group, member), data: { confirm: 'Are you sure?' } , class: 'badge' if group.user == current_user && current_user != member %></li>
                     <% end %>
                   </ul>
                 </div>
-                <div id="<%= group.id %>-options" class="tab-pane fade options-tab">
+                <div id="<%= group.to_param %>-options" class="tab-pane fade options-tab">
                   <div class="invite-button">
-                    <a href="#" class='btn btn-default group-invite-link' data-id="<%= group.id %>" data-toggle='modal' data-target='#invite-modal'>Invite by Email</a> or send the link below
+                    <a href="#" class='btn btn-default group-invite-link' data-id="<%= group.to_param %>" data-toggle='modal' data-target='#invite-modal'>Invite by Email</a> or send the link below
                   </div>
                   <div class="input-group group-join-link" data-toggle="tooltip" title="Share this link to invite people to this group">
-                    <input id="<%= group.id %>-url" class="form-control" value="<%= join_group_url(group) %>" readonly />
-                    <span class="input-group-addon clipboard-button" data-clipboard-target='<%= group.id %>-url' title="copy to clipboard"><i class="fa fa-files-o fa-fw"></i></span>
+                    <input id="<%= group.to_param %>-url" class="form-control" value="<%= join_group_url(group) %>" readonly />
+                    <span class="input-group-addon clipboard-button" data-clipboard-target='<%= group.to_param %>-url' title="copy to clipboard"><i class="fa fa-files-o fa-fw"></i></span>
                   </div>
                   <p>
                     <%= link_to 'Leave Group', leave_group_path(group), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' unless group.user == current_user %>
