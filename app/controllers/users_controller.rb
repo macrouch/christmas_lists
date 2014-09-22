@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if answer.downcase == @group.answer.downcase
-        @user.groups << @group
+        @user.groups << @group unless @user.groups.include?(@group)
         format.html { redirect_to groups_path, notice: 'Group joined' }
       else
         format.html { redirect_to join_group_path(@group), alert: 'Incorrect answer, try again' }
