@@ -73,7 +73,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-identity'
 gem 'figaro'
 
-gem 'rinku'
+gem 'rails_autolink'
 gem 'paperclip'
 gem 'font-awesome-rails'
 gem 'zeroclipboard-rails'
