@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
 
   validates :name, presence: true
   validates :list, presence: true
-  validates :description, length: { maximum: 254 }
+  validates :description, length: { maximum: 256 }
   # validates :hidden_from_owner, presence: true
 
   obfuscate_id spin: 546518432
