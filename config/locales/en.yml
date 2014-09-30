@@ -21,10 +21,3 @@
 
 en:
   hello: "Hello world"
-  activerecord:
-    errors:
-      models:
-        item:
-          attributes:
-            description:
-              too_long: "is too long. Including a URL? Try using a free URL shortening service, like <a href='https://bitly.com/shorten/' target='_blank'>bitly.com</a>"

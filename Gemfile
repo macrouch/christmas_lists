@@ -50,6 +50,11 @@ group :development, :test do
   gem 'poltergeist'
 end
 
+group :test do
+  gem 'vcr'
+  gem 'webmock', "1.16"
+end
+
 group :test, :darwin do
   gem 'rb-fsevent', :require => false
 end
@@ -73,6 +78,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-identity'
 gem 'figaro'
 
+gem 'httparty'
 gem 'rails_autolink'
 gem 'paperclip'
 gem 'font-awesome-rails'
