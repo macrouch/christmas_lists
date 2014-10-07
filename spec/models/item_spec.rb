@@ -11,8 +11,8 @@ describe Item do
   it "shortens urls in descriptions" do
     VCR.use_cassette 'item' do
       item = Item.new({name: 'test', description: 'This is a cool link http://www.google.com', list: List.new()})
-      item.shorten_urls
       item.should be_valid
+      item.description.should_not include('http://www.google.com')
     end
   end
 end

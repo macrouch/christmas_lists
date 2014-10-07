@@ -23,16 +23,18 @@ class Item < ActiveRecord::Base
   end
 
   def shorten_urls
-    urls = URI.extract(description)
-    urls.each do |url|
-      result = HTTParty.post("https://www.googleapis.com/urlshortener/v1/url",
-        query: { key: ENV['GOOGLE_SERVER_KEY'] },
-        body: { longUrl: "#{url}" }.to_json,
-        headers: {'Content-Type' => 'application/json'} )
-      short_url = result['id']
+    unless description.nil?
+      urls = URI.extract(description)
+      urls.each do |url|
+        result = HTTParty.post("https://www.googleapis.com/urlshortener/v1/url",
+          query: { key: ENV['GOOGLE_SERVER_KEY'] },
+          body: { longUrl: "#{url}" }.to_json,
+          headers: {'Content-Type' => 'application/json'} )
+        short_url = result['id']
 
-      description.gsub!(url, short_url) unless short_url.nil?
+        description.gsub!(url, short_url) unless short_url.nil?
+      end
+      # self.update(des)
     end
-    # self.update(des)
   end
 end

@@ -49,7 +49,7 @@
 
       <div class='form-group'>
       <div class="col-sm-offset-3 col-sm-9">
-          <%= f.submit class: 'btn btn-primary' %>
+          <%= f.submit class: 'btn btn-primary', data: { disable_with: 'Please wait...' } %>
           <%= link_to 'Cancel', groups_path, class: 'btn btn-default' %>
         </div>
       </div>
