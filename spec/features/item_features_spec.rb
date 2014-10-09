@@ -45,7 +45,7 @@ feature 'User creates item' do
     page.should have_content 'Item created'
 
     click_link 'Item with image'
-    page.should have_xpath("//img[contains(@src, 'logo11w.png')]")
+    page.should have_xpath("//img[contains(@src, 'logo11w_medium.png')]")
   end
 end
 
@@ -151,7 +151,7 @@ feature 'User adds comment to an item' do
   scenario 'adds a private comment', js: true do
     create_item_comment 'Only I can see this comment!', true
     page.should have_content 'Comment created'
-    page.should have_content 'testuser (Private) -- less than a minute ago Only I can see this comment!'    
+    page.should have_content 'testuser (Private) -- less than a minute ago Only I can see this comment!'
   end
 
 end

@@ -22,6 +22,7 @@
 *.DS_Store
 config/database.yml
 public/system/
+public/item_images/
 
 config/deploy.rb
 

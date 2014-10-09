@@ -1,5 +1,5 @@
 <div class="col-md-10">
-  <%= form_for([@collection, @list, @item], html: {class: 'form-horizontal'}) do |f| %>
+  <%= form_for([@collection, @list, @item], html: {class: 'form-horizontal', multipart: true}) do |f| %>
     <fieldset>
       <div class="page-header">
         <h3><% if params[:action] == 'new' %>
@@ -55,12 +55,26 @@
       </div>
 
       <div class='form-group'>
-        <%= f.label :image, class: 'col-sm-4 control-label' do %>
+        <%= f.label :image, class: 'col-sm-4 control-label toggle-image-label' do %>
+          Choose Image
+          <i class="fa fa-question-circle" data-toggle="tooltip" title="Browse your device for an image of the item (optional)"></i>
+        <% end %>
+        <%= f.label :image, class: 'col-sm-4 control-label toggle-image-label hidden' do %>
           New Image Url
           <i class="fa fa-question-circle" data-toggle="tooltip" title="Enter an address for a new image (optional)"></i>
         <% end %>
         <div class='col-sm-8'>
-        <%= f.text_field :image, value: nil, class: 'form-control' %>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <span class="btn btn-default btn-file">
+                  Browse <%= f.file_field :image, accept: "image/*", class: 'image-browse' %>
+              </span>
+            </span>
+            <input type="text" value='No image selected' class="form-control" readonly>
+          </div>
+
+          <%= f.text_field :image, value: nil, class: 'form-control image-url hidden', disabled: true %>
+          <span class="help-block hidden-xs hidden-sm toggle-image">Need to use a URL instead?</span>
         </div>
       </div>
 

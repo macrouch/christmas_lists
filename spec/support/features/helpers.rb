@@ -57,6 +57,7 @@ module Features
     def create_item_with(name, description, image_url=nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
+      change_to_image_url
       fill_in 'New Image Url', with: image_url if image_url
       click_button 'Create Item'
     end
@@ -73,6 +74,7 @@ module Features
     def edit_item_with(name, description, image_url=nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
+      change_to_image_url
       fill_in 'New Image Url', with: image_url if image_url
       click_button 'Update Item'
     end
@@ -88,6 +90,10 @@ module Features
       fill_in 'Comment', with: comment
       hidden ? check('Private?') : uncheck('Private?')
       click_button 'Add Comment'
+    end
+
+    def change_to_image_url
+      page.execute_script "$('span.toggle-image').click()"
     end
 
     ### Group Helpers
