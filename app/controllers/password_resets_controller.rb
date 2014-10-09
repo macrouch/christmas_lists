@@ -40,6 +40,13 @@ class PasswordResetsController < ApplicationController
 
   def set_user
     @user = User.find_by_password_reset_token(params[:id])
-    @identity = Identity.find(@user.uid) if @user
+    begin
+      @identity = Identity.find(@user.uid) if @user
+    rescue
+      provider = @user.provider
+      provider = 'Google' if provider == 'google_oauth2'
+      provider = 'Facebook' if provider == 'facebook'
+      redirect_to root_url, notice: "You used #{provider} to create your account. Please use the #{provider} button to login."
+    end
   end
 end
