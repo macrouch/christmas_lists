@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
 
         collection = Collection.new({name: Time.now.year, group: @group})
         collection.save
-        format.html { redirect_to groups_path, notice: 'Group created'}
+        format.html { redirect_to groups_path, notice: 'Group created. To invite people to your group, click on the "Options" tab for your group below.'}
       else
         format.html { render action: 'new' }
       end
