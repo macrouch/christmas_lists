@@ -23,7 +23,7 @@
           <i class="fa fa-question-circle" data-toggle="tooltip" title="Give this group a name"></i>
         <% end %>
         <div class='col-sm-9'>
-          <%= f.text_field :name, class: 'form-control' %>
+          <%= f.text_field :name, placeholder: "Group name", class: 'form-control' %>
         </div>
       </div>
 
@@ -33,7 +33,7 @@
           <i class="fa fa-question-circle" data-toggle="tooltip" title="A question only group members should be able to answer"></i>
         <% end %>
         <div class='col-sm-9'>
-          <%= f.text_field :question, class: 'form-control' %>
+          <%= f.text_field :question, placeholder: "Question (Something only group members know)", class: 'form-control' %>
         </div>
       </div>
 
@@ -43,7 +43,7 @@
         <i class="fa fa-question-circle" data-toggle="tooltip" title="Answer to the secret question"></i>
         <% end %>
         <div class='col-sm-9'>
-          <%= f.text_field :answer, class: 'form-control' %>
+          <%= f.text_field :answer, placeholder: "Group question's answer", class: 'form-control' %>
         </div>
       </div>
 

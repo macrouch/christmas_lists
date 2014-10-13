@@ -65,8 +65,8 @@ module Features
     def create_item_in_another_list_with(name, description, hidden_from_owner=true, purchased=false, purchased_by=nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
-      hidden_from_owner ? check('Hide from owner?') : uncheck('Hide from owner?')
-      purchased ? check('Purchased?') : uncheck('Purchased?')
+      check_hide_item(hidden_from_owner)
+      check_purchased(purchased)
       fill_in 'Purchased by', with: purchased_by
       click_button 'Create Item'
     end
@@ -80,7 +80,7 @@ module Features
     end
 
     def purchase_item
-      check('Purchased?')
+      check_purchased(true)
       fill_in 'Purchased by', with: 'testuser'
       click_button 'Update Item'
     end
@@ -88,12 +88,27 @@ module Features
     def create_item_comment(comment, hidden)
       click_link 'Add New Comment'
       fill_in 'Comment', with: comment
-      hidden ? check('Private?') : uncheck('Private?')
+      check_private_comment(hidden)
       click_button 'Add Comment'
     end
 
     def change_to_image_url
       page.execute_script "$('span.toggle-image').click()"
+    end
+
+    def check_hide_item(value)
+      script = "$('.hide-item-checkbox').prop('checked', #{value});"
+      page.execute_script script
+    end
+
+    def check_purchased(value)
+      script = "$('.purchased-checkbox').prop('checked', #{value});"
+      page.execute_script script
+    end
+
+    def check_private_comment(value)
+      script = "$('.private-comment-checkbox').prop('checked', #{value});"
+      page.execute_script script
     end
 
     ### Group Helpers

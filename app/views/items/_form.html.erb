@@ -27,7 +27,7 @@
           <i class="fa fa-question-circle" data-toggle="tooltip" title="Give this item a name"></i>
         <% end %>
         <div class='col-sm-8'>
-          <%= f.text_field :name, class: 'form-control' %>
+          <%= f.text_field :name, placeholder: "Item name", class: 'form-control' %>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
           <i class="fa fa-question-circle" data-toggle="tooltip" title="Enter a description of the item (optional)"></i>
         <% end %>
         <div class='col-sm-8'>
-          <%= f.text_area :description, class: 'form-control' %>
+          <%= f.text_area :description, placeholder: "Item description", class: 'form-control' %>
         </div>
       </div>
 
@@ -82,22 +82,34 @@
         <hr>
         <h3>The following items are not visible to <%= @list.username || "list owner" %></h3>
         <div class='form-group'>
-          <%= f.label :hidden_from_owner, class: 'col-sm-4 control-label' do %>
-            Hide from owner?
+          <label class="col-sm-4 control-label">
+            Hide item from list owner?
             <i class="fa fa-question-circle" data-toggle="tooltip" title="Hide this item from list owner (optional)"></i>
-          <% end %>
+          </label>
           <div class='col-sm-8 item-checkbox'>
-            <%= f.check_box :hidden_from_owner, class: 'checkbox' %>
+            <div class="onoffswitch">
+              <%= f.check_box :hidden_from_owner, class: 'checkbox onoffswitch-checkbox hide-item-checkbox' %>
+              <label class="onoffswitch-label" for="item_hidden_from_owner">
+                  <span class="onoffswitch-inner"></span>
+                  <span class="onoffswitch-switch"></span>
+              </label>
+            </div>
           </div>
         </div>
 
         <div class='form-group'>
-          <%= f.label :purchased, class: 'col-sm-4 control-label' do %>
-            Purchased?
+          <label class="col-sm-4 control-label">
+            Has item been purchased?
             <i class="fa fa-question-circle" data-toggle="tooltip" title="Has this item been purchased? (optional)"></i>
-          <% end %>
+          </label>
           <div class='col-sm-8 item-checkbox'>
-            <%= f.check_box :purchased, class: 'checkbox' %>
+            <div class="onoffswitch">
+              <%= f.check_box :purchased, class: 'checkbox onoffswitch-checkbox purchased-checkbox' %>
+              <label class="onoffswitch-label" for="item_purchased">
+                  <span class="onoffswitch-inner"></span>
+                  <span class="onoffswitch-switch"></span>
+              </label>
+            </div>
           </div>
         </div>
 
@@ -107,7 +119,7 @@
             <i class="fa fa-question-circle" data-toggle="tooltip" title="Who purchased the item? (optional)"></i>
           <% end %>
           <div class='col-sm-8'>
-            <%= f.text_field :purchased_by, class: 'form-control' %>
+            <%= f.text_field :purchased_by, placeholder: "Name of person who bought item", class: 'form-control' %>
           </div>
         </div>
 
@@ -176,12 +188,18 @@
             </div>
 
             <div class='form-group'>
-              <%= f.label :private, class: 'col-sm-3 control-label' do %>
+              <label class="col-sm-3 control-label">
                 Private?
                 <i class="fa fa-question-circle" data-toggle="tooltip" title="Keep this comment private to you?"></i>
-              <% end %>
-              <div class='col-sm-9'>
-                <%= f.check_box :private, class: 'form-control' %>
+              </label>
+              <div class='col-sm-9 item-checkbox'>
+                <div class="onoffswitch">
+                  <%= f.check_box :private, class: 'checkbox onoffswitch-checkbox private-comment-checkbox' %>
+                  <label class="onoffswitch-label" for="item_comment_private">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
               </div>
             </div>
 
