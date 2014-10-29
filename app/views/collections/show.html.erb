@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12 visible-xs visible-sm">
+    <div class="col-md-12 visible-xs visible-sm hidden-print">
       <h4>Jump to list: <%= select_tag(:list_navigation, options_for_select(@list_dropdown)) %></h4>
     </div>
   </div>
@@ -24,14 +24,14 @@
             </div>
           </div>
           <div class="panel-body">
-            <p class='owner'>Owner: <%= list.user.name if list.user %></p>
-            <p class='actions'><%= link_to 'Add Item', new_collection_list_item_path(@collection, list), class: 'btn btn-default' %> <%= link_to 'Edit List', edit_collection_list_path(@collection, list), class: 'btn btn-default' %></p>
+            <p class='owner hidden-print'>Owner: <%= list.user.name if list.user %></p>
+            <p class='actions hidden-print'><%= link_to 'Add Item', new_collection_list_item_path(@collection, list), class: 'btn btn-default' %> <%= link_to 'Edit List', edit_collection_list_path(@collection, list), class: 'btn btn-default' %></p>
             <dl>
               <% list.items.each do |item| %>
                 <%= render partial: 'item_view', locals: {collection: @collection, list: list, item: item} %>
               <% end %>
             </dl>
-            <div class='visible-xs visible-sm back-to-top'>
+            <div class='visible-xs visible-sm back-to-top hidden-print'>
             <%= link_to ' Back to top', '#', class: 'fa fa-arrow-up top-link' %>
             </div>
           </div>
