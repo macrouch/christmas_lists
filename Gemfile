@@ -66,9 +66,11 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
-gem 'rvm-capistrano', group: :development
-gem "capistrano-db-tasks", group: :development, require: false
+group :development do
+  gem 'capistrano', '~> 2.15'
+  gem 'rvm-capistrano'
+  gem "capistrano-db-tasks", require: false
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
