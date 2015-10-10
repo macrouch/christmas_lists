@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.2.4'
 
 # Use sqlite3 as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.20'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -40,7 +40,6 @@ group :development, :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'guard-rspec'
-  gem 'shoulda-matchers'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -52,11 +51,12 @@ end
 
 group :test do
   gem 'vcr'
-  gem 'webmock', "1.16"
+  gem 'webmock', '1.16'
+  gem 'shoulda-matchers'
 end
 
 group :test, :darwin do
-  gem 'rb-fsevent', :require => false
+  gem 'rb-fsevent', require: false
 end
 
 # Use ActiveModel has_secure_password
@@ -68,8 +68,9 @@ end
 # Use Capistrano for deployment
 group :development do
   gem 'capistrano', '~> 2.15'
-  gem 'rvm-capistrano'
-  gem "capistrano-db-tasks", require: false
+  gem 'rvm-capistrano', require: false
+  gem 'capistrano-db-tasks', require: false
+  gem 'web-console', '~> 2.0'
 end
 
 # Use debugger

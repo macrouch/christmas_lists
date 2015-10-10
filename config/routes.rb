@@ -1,15 +1,14 @@
-ChristmasLists::Application.routes.draw do
-
-  post "/auth/:provider/callback" => "sessions#create"
-  get "activate/:token" => "users#activate", as: :user_activation
-  get "/auth/:provider/callback" => "sessions#create"
-  get "/auth/failure" => "sessions#failure"
-  get "/logout" => "sessions#destroy", as: :logout
-  get "join_group/:id" => "groups#join", as: :join_group
-  get "group/:group_id/remove_group_member/:member_id" => "groups#remove_member", as: :remove_group_member
-  post "join_group/:id" => "users#join_group"
-  get "leave_group/:id" => "users#leave_group", as: :leave_group
-  post "group_invite" => "groups#invite", as: :group_invite
+Rails.application.routes.draw do
+  post '/auth/:provider/callback' => 'sessions#create'
+  get 'activate/:token' => 'users#activate', as: :user_activation
+  get '/auth/:provider/callback' => 'sessions#create'
+  get '/auth/failure' => 'sessions#failure'
+  get '/logout' => 'sessions#destroy', as: :logout
+  get 'join_group/:id' => 'groups#join', as: :join_group
+  get 'group/:group_id/remove_group_member/:member_id' => 'groups#remove_member', as: :remove_group_member
+  post 'join_group/:id' => 'users#join_group'
+  get 'leave_group/:id' => 'users#leave_group', as: :leave_group
+  post 'group_invite' => 'groups#invite', as: :group_invite
 
   resources :users, only: [:edit, :update]
   resources :identities
@@ -23,6 +22,7 @@ ChristmasLists::Application.routes.draw do
   resources :password_resets
 
   root 'sessions#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

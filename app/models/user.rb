@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
       user.uid = auth['uid']
       user.name = auth['info']['name']
       user.email = auth['info']['email']
-      if auth['provider'] == "identity"
+      if auth['provider'] == 'identity'
         user.original_url = return_to
         user.generate_token(:email_token)
       else
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
       end
     end
     user = User.where(uid: auth[:uid]).first
-    UserMailer.activation_email(user).deliver unless user.active
+    UserMailer.activation_email(user).deliver_now unless user.active
     user
   end
 

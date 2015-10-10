@@ -13,9 +13,9 @@ module Features
 
     def sign_in_with (email, password)
       visit root_path
-      fill_in "Email", :with => email
-      fill_in "Password", :with => password
-      click_button "Login"
+      fill_in 'Email', with: email
+      fill_in 'Password', with: password
+      click_button 'Login'
     end
 
     def update_password(password, confirmation)
@@ -28,7 +28,7 @@ module Features
 
     def sign_out
       visit root_path
-      click_link "Logout"
+      click_link 'Logout'
     end
 
     ### List Helpers
@@ -54,7 +54,7 @@ module Features
     end
 
     ### Item Helpers
-    def create_item_with(name, description, image_url=nil)
+    def create_item_with(name, description, image_url = nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
       change_to_image_url
@@ -62,7 +62,7 @@ module Features
       click_button 'Create Item'
     end
 
-    def create_item_in_another_list_with(name, description, hidden_from_owner=true, purchased=false, purchased_by=nil)
+    def create_item_in_another_list_with(name, description, hidden_from_owner = true, purchased = false, purchased_by = nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
       check_hide_item(hidden_from_owner)
@@ -71,7 +71,7 @@ module Features
       click_button 'Create Item'
     end
 
-    def edit_item_with(name, description, image_url=nil)
+    def edit_item_with(name, description, image_url = nil)
       fill_in 'Name', with: name
       fill_in 'Description', with: description
       change_to_image_url
@@ -93,7 +93,8 @@ module Features
     end
 
     def change_to_image_url
-      page.execute_script "$('span.toggle-image').click()"
+      script = "$('span.toggle-image').click()"
+      page.execute_script script
     end
 
     def check_hide_item(value)
@@ -119,6 +120,5 @@ module Features
       fill_in 'Answer', with: answer
       click_button 'Create Group'
     end
-
   end
 end
