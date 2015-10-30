@@ -11,82 +11,95 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921170221) do
+ActiveRecord::Schema.define(version: 20151030001519) do
 
-  create_table "collections", force: true do |t|
-    t.integer  "group_id"
-    t.string   "name"
+  create_table "collections", force: :cascade do |t|
+    t.integer  "group_id",   limit: 4
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "group_members", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
+  create_table "group_members", force: :cascade do |t|
+    t.integer  "group_id",   limit: 4
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "groups", force: true do |t|
-    t.string   "name"
-    t.string   "question"
-    t.string   "answer"
-    t.integer  "user_id"
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "question",   limit: 255
+    t.string   "answer",     limit: 255
+    t.integer  "user_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "identities", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
+  create_table "identities", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "item_comments", force: true do |t|
-    t.string   "comment"
-    t.integer  "item_id"
-    t.integer  "user_id"
-    t.boolean  "private",    default: false
+  create_table "item_comments", force: :cascade do |t|
+    t.string   "comment",    limit: 255
+    t.integer  "item_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.boolean  "private",                default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "items", force: true do |t|
-    t.string   "name"
-    t.string   "description"
+  create_table "items", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.string   "description",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "list_id"
-    t.boolean  "hidden_from_owner",  default: false
+    t.integer  "list_id",            limit: 4
+    t.boolean  "hidden_from_owner",              default: false
     t.boolean  "purchased"
-    t.string   "purchased_by"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
+    t.string   "purchased_by",       limit: 255
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
   end
 
-  create_table "lists", force: true do |t|
-    t.string   "name"
-    t.integer  "user_id"
+  create_table "lists", force: :cascade do |t|
+    t.string   "name",          limit: 255
+    t.integer  "user_id",       limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "collection_id"
+    t.integer  "collection_id", limit: 4
   end
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "uid"
-    t.string   "provider"
+  create_table "sub_group_members", force: :cascade do |t|
+    t.integer  "sub_group_id", limit: 4
+    t.integer  "user_id",      limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "sub_groups", force: :cascade do |t|
+    t.integer  "group_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name",                   limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "provider",               limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
-    t.boolean  "active",                 default: false
-    t.string   "email_token"
-    t.string   "original_url"
-    t.string   "password_reset_token"
+    t.string   "email",                  limit: 255
+    t.boolean  "active",                             default: false
+    t.string   "email_token",            limit: 255
+    t.string   "original_url",           limit: 255
+    t.string   "password_reset_token",   limit: 255
     t.datetime "password_reset_sent_at"
   end
 

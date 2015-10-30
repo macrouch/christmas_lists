@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     if !@user.active && @user.original_url
-      redirect_to root_url, alert: "You must activate your account before you can join groups"
+      redirect_to root_url, alert: 'You must activate your account before you can join groups'
     end
     if @user.groups.include?(@group)
       redirect_to groups_path, notice: "You are already a member of #{@group.name}"
@@ -74,8 +74,32 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       UserMailer.invitation_email(user, @group, emails).deliver
-      format.html { redirect_to groups_path, notice: "Invitation email sent" }
+      format.html { redirect_to groups_path, notice: 'Invitation email sent' }
     end
+  end
+
+  def draw_names
+    @group = Group.find(params[:id])
+  end
+
+  def save_sub_groups
+    @group = Group.find(params[:id])
+    @group.sub_groups.destroy_all
+
+    params[:sub_groups].each do |group|
+      member_ids = group[1].map(&:to_i)
+      members = User.where(id: member_ids)
+      puts "members: #{members.inspect}"
+      sub_group = @group.sub_groups.create
+      sub_group.members = members
+      sub_group.save
+    end
+
+    redirect_to :draw_names
+  end
+
+  def do_draw_names
+
   end
 
   private

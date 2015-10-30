@@ -136,6 +136,8 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
     json (1.8.3)
     jwt (1.5.1)
     launchy (2.4.3)
@@ -359,6 +361,7 @@ DEPENDENCIES
   guard-rspec
   httparty
   jquery-rails
+  jquery-ui-rails
   launchy
   meta_request
   mysql2 (~> 0.3.20)
@@ -384,3 +387,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   webmock (= 1.16)
   zeroclipboard-rails
+
+BUNDLED WITH
+   1.10.5

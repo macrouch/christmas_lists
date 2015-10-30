@@ -28,3 +28,44 @@
     margin: 10px 0;
   }
 }
+
+
+.sub-group {
+  margin: 10px;
+  padding: 5px;
+  width: 23%;
+}
+
+.sortable {
+  list-style-type: none;
+  margin: 10px;
+  background: #4a713d;
+  padding: 5px;
+  border-radius: 5px;
+
+  li {
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+
+
+.names-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.draw-names-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  form {
+    margin: 1em;
+  }
+}

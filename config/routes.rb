@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   post 'join_group/:id' => 'users#join_group'
   get 'leave_group/:id' => 'users#leave_group', as: :leave_group
   post 'group_invite' => 'groups#invite', as: :group_invite
+  get 'draw_names/:id' => 'groups#draw_names', as: :draw_names
+  post 'draw_names/:id' => 'groups#do_draw_names', as: :do_draw_names
+  post 'save_sub_groups/:id' => 'groups#save_sub_groups', as: :save_sub_groups
 
   resources :users, only: [:edit, :update]
   resources :identities

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="draw-names-actions">
+    <%= form_tag save_sub_groups_path(@group.to_param), id: 'save-sub-groups-form' do %>
+      <%= submit_tag 'Save Sub-Groups', class: 'btn btn-default', method: :post %>
+    <% end %>
+    <%= form_tag do_draw_names_path(@group.to_param) do %>
+      <%= submit_tag 'Draw Names', class: 'btn btn-default', method: :post %>
+    <% end %>
+  </div>
+  <div class="names-container">
+    <div class="sub-group default-group">
+      <h5>
+        These members will not draw names
+      </h5>
+      <ul id="sortable-0" class="sortable">
+        <% @group.members_not_in_sub_group.each do |member| %>
+          <li data-member-id="<%= member.id %>" class="ui-state-default">
+            <%= member.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <% @group.sub_groups.each_with_index do |sub_group, index| %>
+      <div class="sub-group">
+        <h5>Group <%= index + 1 %></h5>
+        <ul id="sortable-<%= index + 1 %>" class="sortable">
+          <% sub_group.members.each do |member| %>
+            <li data-member-id="<%= member.id %>" class="ui-state-default">
+              <%= member.name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="sub-group">
+      <h5>New Group</h5>
+      <ul id="sortable-<%= @group.sub_groups.size + 1 %>" class="sortable empty">
+      </ul>
+    </div>
+  </div>
+</div>

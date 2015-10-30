@@ -42,9 +42,16 @@
                 </div>
                 <div id="<%= group.to_param %>-members" class="tab-pane fade">
                   <ul class="list-group">
-                    <% group.members.each do |member| %>
-                      <li class="list-group-item"><%= member.name %> <%= link_to 'Remove', remove_group_member_path(group, member), data: { confirm: 'Are you sure?' } , class: 'badge' if group.user == current_user && current_user != member %></li>
+                    <% if group.user == current_user %>
+                      <div class="draw-names-button">
+                        <%= link_to 'Draw Names', draw_names_path(group), class: 'btn btn-default' %>
+                      </div>
                     <% end %>
+                    <p>
+                      <% group.members.each do |member| %>
+                        <li class="list-group-item"><%= member.name %> <%= link_to 'Remove', remove_group_member_path(group, member), data: { confirm: 'Are you sure?' } , class: 'badge' if group.user == current_user && current_user != member %></li>
+                      <% end %>
+                    </p>
                   </ul>
                 </div>
                 <div id="<%= group.to_param %>-options" class="tab-pane fade options-tab">
