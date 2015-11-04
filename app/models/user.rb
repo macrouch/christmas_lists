@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :item_comments
   has_many :group_members
   has_many :groups, through: :group_members
-  has_one :group
+  has_many :name_drawings, foreign_key: 'picker_id'
 
   validates :name, presence: true
   validates :uid, presence: true
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   obfuscate_id spin: 891561354
 
-  def self.from_omniauth(auth, return_to=nil)
+  def self.from_omniauth(auth, return_to = nil)
     where(email: auth['info']['email']).first || create_with_omniauth(auth, return_to)
   end
 

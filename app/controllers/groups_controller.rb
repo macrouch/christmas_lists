@@ -99,7 +99,9 @@ class GroupsController < ApplicationController
   end
 
   def do_draw_names
-
+    @group = Group.find(params[:id])
+    @group.draw_names
+    redirect_to :draw_names
   end
 
   private

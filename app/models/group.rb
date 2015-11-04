@@ -13,7 +13,33 @@ class Group < ActiveRecord::Base
 
   obfuscate_id spin: 48151248
 
-  def members_not_in_sub_group
+  def non_sub_group_members
     members.select { |member| !sub_group_members.include? member }
+  end
+
+  def draw_names
+    collection = collections.first
+    collection.name_drawings.destroy_all
+    available_members = sub_group_members.map(&:id)
+
+    sub_group_members.each do |member|
+      # temporarily remove members other sub_group_members
+      sub_group = sub_groups.select { |g| g.members.include?(member) }
+      same_sub_group_members = sub_group.first.members.map(&:id)
+
+      temp_available_members = available_members - same_sub_group_members
+
+      # select random available member
+      receiver = temp_available_members[rand(temp_available_members.size)]
+
+      # remove selected member from available_members
+      available_members -= [receiver]
+
+      name_drawing = NameDrawing.new
+      name_drawing.picker = member
+      name_drawing.receiver_id = receiver
+      name_drawing.collection = collection
+      name_drawing.save
+    end
   end
 end

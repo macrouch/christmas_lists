@@ -13,7 +13,7 @@
         These members will not draw names
       </h5>
       <ul id="sortable-0" class="sortable">
-        <% @group.members_not_in_sub_group.each do |member| %>
+        <% @group.non_sub_group_members.each do |member| %>
           <li data-member-id="<%= member.id %>" class="ui-state-default">
             <%= member.name %>
           </li>
@@ -41,3 +41,9 @@
     </div>
   </div>
 </div>
+
+<ul>
+  <% @group.collections.first.name_drawings.each do |drawing| %>
+    <li><%= drawing.picker.name %> -> <%= drawing.receiver.name %></li>
+  <% end %>
+</ul>

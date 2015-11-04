@@ -31,7 +31,7 @@ $(document).ready ->
 
       remove: (event, ui) ->
         # remove stack if empty
-        if $(this).attr('id') != 'sortable-1' and !$(this).children('li').length
+        if $(this).attr('id') != 'sortable-0' and !$(this).children('li').length
           $(this).parent().remove()
     ).disableSelection()
 

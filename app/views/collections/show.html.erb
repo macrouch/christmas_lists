@@ -9,6 +9,23 @@
     </div>
   </div>
 
+  <% if @name_drawing %>
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#drawn-name" aria-expanded="false" aria-controls="drawn-name">
+            Whose name did you draw?
+          </button>
+        </p>
+        <div class="collapse" id="drawn-name">
+          <div class="well">
+            <%= @name_drawing.receiver.name %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <div class='row'>
     <% @lists.each_with_index do |list, index| %>
       <!-- keep 4 lists per row -->

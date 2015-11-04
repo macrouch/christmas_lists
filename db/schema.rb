@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030001519) do
+ActiveRecord::Schema.define(version: 20151101213909) do
 
   create_table "collections", force: :cascade do |t|
     t.integer  "group_id",   limit: 4
@@ -74,6 +74,14 @@ ActiveRecord::Schema.define(version: 20151030001519) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "collection_id", limit: 4
+  end
+
+  create_table "name_drawings", force: :cascade do |t|
+    t.integer  "collection_id", limit: 4
+    t.integer  "picker_id",     limit: 4
+    t.integer  "receiver_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "sub_group_members", force: :cascade do |t|

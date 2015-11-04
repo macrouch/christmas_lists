@@ -73,7 +73,7 @@ RSpec.configure do |config|
   end
 
   # Lets me use 'should' in specs
-  config.expect_with(:rspec) { |c| c.syntax = :should }
+  config.expect_with(:rspec) { |c| c.syntax = [:should, :expect] }
 end
 
 Shoulda::Matchers.configure do |config|
