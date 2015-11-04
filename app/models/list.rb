@@ -8,6 +8,8 @@ class List < ActiveRecord::Base
 
   obfuscate_id spin: 65135134
 
+  default_scope { order(name: :asc) }
+
   def username
     if self.user
       self.user.name
