@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/namick/obfuscate_id.git
-  revision: bd3ee63bbe3bf2de93023947478831f4ee01a1bf
-  specs:
-    obfuscate_id (0.2.0)
-      rails (~> 4.2.0)
-      scatter_swap (~> 0.0.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -183,6 +175,9 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+    obfuscate_id (0.2.0)
+      rails (~> 4.2.0)
+      scatter_swap (~> 0.0.3)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
@@ -365,7 +360,7 @@ DEPENDENCIES
   launchy
   meta_request
   mysql2 (~> 0.3.20)
-  obfuscate_id!
+  obfuscate_id
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-identity
