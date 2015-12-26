@@ -20,7 +20,7 @@
 
 /coverage/
 *.DS_Store
-config/database.yml
+# config/database.yml
 public/system/
 public/item_images/
 
