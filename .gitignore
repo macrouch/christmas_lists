@@ -27,3 +27,8 @@ public/item_images/
 config/deploy.rb
 
 spec/vcr/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
