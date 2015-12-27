@@ -51,7 +51,7 @@ class ListsController < ApplicationController
 
   def set_collection
     @collection = Collection.find(params[:collection_id])
-    @users = @collection.group.members
+    @users = @collection.group.members.order('name')
   end
 
   def list_params
