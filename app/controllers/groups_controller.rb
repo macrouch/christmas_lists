@@ -89,7 +89,7 @@ class GroupsController < ApplicationController
     params[:sub_groups].each do |group|
       member_ids = group[1].map(&:to_i)
       members = User.where(id: member_ids)
-      puts "members: #{members.inspect}"
+
       sub_group = @group.sub_groups.create
       sub_group.members = members
       sub_group.save

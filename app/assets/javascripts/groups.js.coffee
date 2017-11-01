@@ -49,4 +49,3 @@ $(document).ready ->
           name: "sub_groups[#{index}][]"
           value: memberId
         ).appendTo($form)
-        console.log 'stuff here!'
