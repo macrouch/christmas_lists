@@ -1,3 +1,35 @@
+<% unless @user_notifications.empty? %>
+  <div id="notifications-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">System Updates</h4>
+        </div>
+        <div class="modal-body">
+          <% @user_notifications.each do |user_notification| %>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <%= user_notification.title %>
+              </div>
+
+              <div class="panel-body">
+                <%= user_notification.message %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <%= button_to "Close", user_notifications_destroy_path, remote: true, method: :delete, class: 'btn btn-primary', params: { ids: @user_notifications.map { |user_notification| user_notification.id } } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $('#notifications-modal').modal('show');
+</script>
+
 <div class="container">
   <div class="page-header">
     <h3><%= @group.name %> - <%= @collection.name %></h3>

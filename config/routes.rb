@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  delete 'user_notifications/destroy'
+
   post '/auth/:provider/callback' => 'sessions#create'
   get 'activate/:token' => 'users#activate', as: :user_activation
   get '/auth/:provider/callback' => 'sessions#create'

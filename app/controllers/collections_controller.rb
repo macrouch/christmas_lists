@@ -11,7 +11,10 @@ class CollectionsController < ApplicationController
     @lists = @collection.lists
     @list_dropdown = @lists.map { |list| [list.name, name_to_id(list.name)] }
     @list_dropdown.unshift ['Select List', '']
+
     @name_drawing = @collection.name_drawings.where(picker: @current_user).first
+
+    @user_notifications = UserNotification.where(user: @current_user, is_read: false).all
   end
 
   def new

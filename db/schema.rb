@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101213909) do
+ActiveRecord::Schema.define(version: 20171101021347) do
 
   create_table "collections", force: :cascade do |t|
     t.integer  "group_id",   limit: 4
@@ -84,6 +84,13 @@ ActiveRecord::Schema.define(version: 20151101213909) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.string   "message",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "sub_group_members", force: :cascade do |t|
     t.integer  "sub_group_id", limit: 4
     t.integer  "user_id",      limit: 4
@@ -95,6 +102,14 @@ ActiveRecord::Schema.define(version: 20151101213909) do
     t.integer  "group_id",   limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+  end
+
+  create_table "user_notifications", force: :cascade do |t|
+    t.integer  "user_id",         limit: 4
+    t.integer  "notification_id", limit: 4
+    t.boolean  "is_read",                   default: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "users", force: :cascade do |t|

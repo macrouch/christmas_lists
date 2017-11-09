@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :group_members
   has_many :groups, through: :group_members
   has_many :name_drawings, foreign_key: 'picker_id'
+  has_many :notifications, through: :user_notifications
+  has_many :user_notifications
 
   validates :name, presence: true
   validates :uid, presence: true
