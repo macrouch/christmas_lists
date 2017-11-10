@@ -8,7 +8,11 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @lists = @collection.lists
+    # Display the current user's list first on the show page
+    current_user_lists = @collection.lists.where(user: @current_user)
+    other_lists = @collection.lists.where.not(id: current_user_lists)
+    @lists = current_user_lists + other_lists
+
     @list_dropdown = @lists.map { |list| [list.name, name_to_id(list.name)] }
     @list_dropdown.unshift ['Select List', '']
 
