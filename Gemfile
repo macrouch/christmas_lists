@@ -91,5 +91,3 @@ gem 'zeroclipboard-rails'
 gem 'obfuscate_id'
 gem 'aws-sdk', '< 2.0'
 gem 'rack-attack'
-
-gem 'rb-readline'

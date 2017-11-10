@@ -253,7 +253,6 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    rb-readline (0.5.5)
     rdoc (4.2.0)
       json (~> 1.4)
     ref (2.0.0)
@@ -380,7 +379,6 @@ DEPENDENCIES
   rails (= 4.2.4)
   rails_autolink
   rb-fsevent
-  rb-readline
   rspec-rails
   rvm-capistrano
   sass-rails (~> 4.0.0)
