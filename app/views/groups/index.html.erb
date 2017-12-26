@@ -33,9 +33,15 @@
               <div class="tab-content">
                 <div id="<%= group.to_param %>-lists" class="tab-pane fade in active">
                   <ul class="list-group">
+                    <% if group.user == current_user %>
+                      <li class="list-group-item">
+                        <%= link_to 'Create Next Collection', create_next_collection_path(group.to_param), method: :post %>
+                      </li>
+                    <% end %>
                     <% group.collections.each do |collection| %>
                         <%= link_to collection, class: 'list-group-item'  do %>
-                          <%= collection.name%><span class="badge">View</span>
+                          <%= collection.name %>
+                          <span class="badge">View</span>
                         <% end %>
                     <% end %>
                   </ul>

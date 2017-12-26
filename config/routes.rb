@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'draw_names/:id' => 'groups#draw_names', as: :draw_names
   post 'draw_names/:id' => 'groups#do_draw_names', as: :do_draw_names
   post 'save_sub_groups/:id' => 'groups#save_sub_groups', as: :save_sub_groups
+  post 'create_next_collection/:id' => 'groups#create_next_collection', as: :create_next_collection
 
   resources :users, only: [:edit, :update]
   resources :identities

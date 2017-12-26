@@ -104,6 +104,19 @@ class GroupsController < ApplicationController
     redirect_to :draw_names
   end
 
+  def create_next_collection
+    @group = Group.find(params[:id])
+
+    last_collection = @group.collections.first
+    new_collection = @group.collections.create(name: last_collection.name.to_i + 1)
+
+    last_collection.lists.each do |list|
+      new_collection.lists << List.create(user_id: list.user_id, name: list.name)
+    end
+
+    redirect_to new_collection
+  end
+
   private
 
   def group_params
