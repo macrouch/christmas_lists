@@ -27,3 +27,4 @@ class ApplicationController < ActionController::Base
     @tracking_id = ENV["GOOGLE_TRACKER"]
   end
 end
+# lets see what houndci does with this file
