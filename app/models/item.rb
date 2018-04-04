@@ -28,15 +28,11 @@ class Item < ActiveRecord::Base
     unless description.nil?
       urls = URI.extract(description)
       urls.each do |url|
-        result = HTTParty.post("https://www.googleapis.com/urlshortener/v1/url",
-          query: { key: ENV['GOOGLE_SERVER_KEY'] },
-          body: { longUrl: "#{url}" }.to_json,
-          headers: {'Content-Type' => 'application/json'} )
-        short_url = result['id']
+        result = HTTParty.get("https://api-ssl.bitly.com/v3/shorten?access_token=#{ENV['BITLY_TOKEN']}&longUrl=#{url}")
+        short_url = result.fetch('data', {})['url']
 
         description.gsub!(url, short_url) unless short_url.nil?
       end
-      # self.update(des)
     end
   end
 end
