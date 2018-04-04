@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.10'
 
 # Use sqlite3 as the database for Active Record
 gem 'mysql2', '~> 0.3.20'
@@ -71,7 +71,8 @@ group :development do
   gem 'capistrano', '~> 2.15'
   gem 'rvm-capistrano', require: false
   gem 'capistrano-db-tasks', require: false
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 2.1'
+  gem 'rubocop'
 end
 
 # Use debugger
@@ -86,8 +87,8 @@ gem 'figaro'
 gem 'httparty'
 gem 'rails_autolink'
 gem 'paperclip'
+gem 'aws-sdk-s3'
 gem 'font-awesome-rails'
 gem 'zeroclipboard-rails'
 gem 'obfuscate_id'
-gem 'aws-sdk', '< 2.0'
 gem 'rack-attack'
