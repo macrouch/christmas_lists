@@ -29,6 +29,7 @@ class Item < ActiveRecord::Base
       urls = URI.extract(description)
       urls.each do |url|
         result = HTTParty.get("https://api-ssl.bitly.com/v3/shorten?access_token=#{ENV['BITLY_TOKEN']}&longUrl=#{url}")
+        next if result.fetch('status_code') == 500
         short_url = result.fetch('data', {})['url']
 
         description.gsub!(url, short_url) unless short_url.nil?
