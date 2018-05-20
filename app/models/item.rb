@@ -14,8 +14,8 @@ class Item < ActiveRecord::Base
 
   has_attached_file :image,
     styles: { medium: "300x300>", thumb: "100x100>" },
-    :default_url => '/images/no_image.png',
-    :url => "/item_images/:id/:basename_:style.:extension"
+    default_url: '/images/no_image.png',
+    path: '/item_images/:id/:basename_:style.:extension'
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   before_validation :shorten_urls
