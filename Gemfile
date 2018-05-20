@@ -64,15 +64,22 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 group :development do
-  gem 'capistrano', '~> 2.15'
-  gem 'rvm-capistrano', require: false
+  gem 'capistrano'
   gem 'capistrano-db-tasks', require: false
   gem 'web-console', '~> 2.1'
   gem 'rubocop'
+
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-unicorn', require: false
+end
+
+group :development do
 end
 
 # Use debugger

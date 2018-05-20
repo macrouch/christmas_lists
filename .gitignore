@@ -32,3 +32,4 @@ spec/vcr/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+config/deploy/*
