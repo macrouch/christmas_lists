@@ -63,8 +63,7 @@ end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
-# Use unicorn as the app server
-gem 'unicorn'
+gem 'puma'
 
 # Use Capistrano for deployment
 group :development do
@@ -76,7 +75,7 @@ group :development do
   gem 'capistrano-rvm', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano3-unicorn', require: false
+  gem 'capistrano3-puma', require: false
 end
 
 group :development do
