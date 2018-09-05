@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_tracker
-    @tracking_id = ENV["GOOGLE_TRACKER"]
+    @tracking_id = ENV["GOOGLE_TRACKER"] 
+    
   end
 end
+# lets see what houndci does with this file
