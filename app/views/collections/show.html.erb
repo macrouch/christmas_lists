@@ -58,6 +58,14 @@
     </div>
   <% end %>
 
+  <% if !@lists_visible %>
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Work on your list now, but all lists will become visible November 1</h4>
+      </div>
+    </div>
+  <% end %>
+
   <div class='row'>
     <% @lists.each_with_index do |list, index| %>
       <!-- keep 4 lists per row -->
