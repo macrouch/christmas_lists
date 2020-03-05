@@ -4,6 +4,7 @@ include ListsHelper
 
 feature 'User creates item' do
   background do
+    allow(Time).to receive(:now).and_return(Time.new(2019, 12))
     sign_up_with 'testuser', 'test@example.com', 'password'
     create_group_with('Test Group', 'What is 1+2?', '3')
     create_list_with 'Test List', 'testuser'

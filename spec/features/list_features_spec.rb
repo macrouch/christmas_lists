@@ -2,10 +2,11 @@ require 'rails_helper'
 
 feature 'User creates list' do
   background do
+    allow(Time).to receive(:now).and_return(Time.new(2019, 12))
     sign_up_with 'testuser', 'test@example.com', 'password'
     create_group_with('Test Group', 'What is 1+2?', '3')
   end
-  
+
   scenario 'with valid name and user' do
     create_list_with 'Test List', 'testuser'
     page.should have_content 'List created'
