@@ -8,7 +8,14 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @lists_visible = Time.now.month >= 11
+    @lists_visible = true
+
+    # Show the list if the collection is not the latest
+    latest_collection = @collection.group.collections.first
+    if @collection.name == latest_collection.name
+      @lists_visible = Time.now.month >= 11
+    end
+
     # Display the current user's list first on the show page
     current_user_lists = @collection.lists.where(user: @current_user)
     other_lists = @collection.lists.where.not(id: current_user_lists)
